@@ -1,0 +1,771 @@
+@import "theme/components/footer.css";
+@import "theme/components/header.css";
+@import "theme/components/page.css";
+@import "theme/components/category.css";
+@import "theme/components/customer.css";
+@import "theme/components/recaptcha.css";
+@import "theme/components/sales.css";
+@import "theme/components/style/forms.css";
+
+/* ===================================================
+** ZERO-1 Master Styles (Master Styling for client)
+=================================================== */
+@import "zero1-master-styles.css";
+
+/* Custom CSS here for now */
+html {
+	font-size: 16px;
+}
+
+
+.container, .columns {
+    max-width: 100% !important;
+}
+
+/* ===================================================
+** Global
+=================================================== */
+
+.page-main {
+    margin: 0;
+}
+
+/* ===================================================
+** Logo
+=================================================== */
+
+@media screen and (max-width: 1024px) {
+    .main-logo {max-width: 120px;}
+}
+
+/* ===================================================
+** Buttons
+=================================================== */
+
+/* After looking at buttons, I want to make them pill shaped but only on one's i want
+I'll add this on top of the zero1-master-styles so I can easily remove if needed */
+
+.c-primary-cta,
+.btn-primary {
+    border-radius: 0px;
+}
+
+/* 
+As above - All border-radius is removed, but we want to add it to some specific elements
+This is much better than removing it all in template files and gives us full control over what's got radius 
+*/
+.c-rounded {
+    border-radius: 50px;
+}
+
+.c-rounded-sm {
+    border-radius: 5px;
+}
+
+/* Force border-radius on primary buttons on POS */
+
+button.btn,
+.catalog-category-view .product-info .btn-primary, 
+.catalog-product-view .product-info-main #product-addtocart-button, 
+.cart-summary #checkout-link-button, .btn-primary, .btn-primary[href$="checkout/"], 
+.btn-primary[href^="http"][href$="checkout/"], 
+.btn-primary[href^="http"][href$="checkout/index/index"] {
+    border-radius: 50px;
+    width: 100%;
+    text-align: center;
+    justify-content: center;
+    height: 70px;
+}
+
+#zero-1-hyva-pos-auto-add button.btn {
+    width: auto;
+    border-radius: 0px 50px 50px 0px;
+    height: 50px;
+}
+
+button.update.btn.btn-secondary {
+    @apply bg-white;
+    @apply border;
+    @apply text-black;
+}
+
+/* ===================================================
+** Category / PLP
+=================================================== */
+
+.c-sort-by-label {
+    display: none;
+}
+
+.catalog-category-view .page-title {
+    padding: 1rem;
+}
+
+#pos-filter-button {
+    color: #000;
+    font-size: 1rem;
+    border: 1px solid #cfcfcf;
+    background: #f2f2f1;
+    text-transform: uppercase;
+    height: 70px;
+}
+
+.sub-category-listing li a {
+    border-color: #cfcfcf;
+}
+
+#layered-navigation-wrapper {
+
+    .c-sort-by-label {
+        display: block;
+        width: 50%;
+        float: left;
+        line-height: 50px;
+    }
+
+    .c-toolbar-sorter {
+        background: #fff;
+        width: 99%;
+        padding: 1rem 0;
+
+        .toolbar-sorter {
+            display: block;
+            padding: 0 1rem;
+        }
+
+        select {
+            width: 50%;
+            padding: 1rem;
+            @apply border-c-primary-cta;
+        }
+    }
+
+}
+
+.products-grid .card,
+.c-slider-product-grid .card {
+    padding: 0;
+
+    .product-info {
+        padding: 1rem;
+        padding-top: 0.5rem;
+    }
+}
+
+#pos-layered-nav {
+    position: fixed;
+    background: #fff;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    z-index: 9999999;
+    margin: 0;
+    padding: 1rem 2rem;
+    overflow: scroll;
+}
+#pos-filter-button.active:before {
+    content: 'Close';
+    font-size: 13px;
+}
+#pos-filter-button.active {
+    position: fixed;
+    top: 1rem;
+    right: 1.5rem;
+    z-index: 999999999;
+    border: 1px solid #cfcfcf;
+    font-size: 0;
+    width: 96%;
+}
+#pos-layered-nav .block-title span {
+    color: #fff !important;
+}
+
+#pos-layered-nav .filter-options-content li a {
+    padding: 2rem 1rem !important;
+    border-bottom: 1px solid #cfcfcf;
+}
+
+#pos-layered-nav .filter-options-content li a span.count {
+    color: #000 !important;
+}
+
+.catalog-category-view .product-item-link {
+    color: #000;
+    font-weight: normal;
+}
+
+/* Grid improvements for mobile  */
+@media screen and (max-width: 640px) {
+    .products-grid {
+
+        .c-grid-wrapper {
+            @apply border-t;
+            margin: 1rem -1.5rem;
+        }
+
+        .card:nth-child(even) {
+            border-width: 0px 0px 1px 0px;
+        }
+        .card:nth-child(odd) {
+            border-width: 0px 1px 1px 0;
+        }
+    }
+}
+
+@media screen and (min-width: 641px) {
+    .category-description {
+        [data-content-type='row'] {
+            &[data-appearance='contained'] {
+                @apply m-0;
+                @apply p-0;
+            }
+        }
+    }
+}
+
+.category-description {
+    p {
+        @apply mb-2;
+    }
+}
+
+
+.catalog-category-view .page-main-title {
+    @apply px-0;
+    @media screen and (max-width: 640px) {
+        padding: 0;
+        margin: 0 0 0.5rem 0;
+    }
+}
+
+@media screen and (max-width: 640px) {
+
+    /* Sometimes categories don't have filters so we'll catch this with the + when filters are present */
+    #product-list-wrapper > .sidebar-main + script + .toolbar-products {
+        top: -30px;
+        position: relative;
+        margin-bottom: -20px;
+        z-index: -1;
+    }
+}
+
+/* Sub Category Listing */
+
+@media screen and (max-width: 640px) {
+    .sub-category-listing {overflow-x: auto;width: 100%;margin-right: auto;margin-left: auto;max-width: 1380px;}
+    .sub-category-listing ul {width: -webkit-max-content;width: -moz-max-content;width: max-content;margin-bottom: 1rem;}
+}
+
+
+/* ===================================================
+** PLP Filters
+=================================================== */
+
+@media screen and (max-width: 640px) {
+    .layered-navigation-block-content {
+        background: #fff;
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        height: 100vh;
+        overflow-y: scroll;
+        z-index: 99999;
+        padding-top: 40px;
+    }
+}
+
+/* ===================================================
+** PDP
+=================================================== */
+
+.c-pdp-container {
+    max-width: 1350px;
+    margin: 0 auto;
+}
+
+.c-pdp-price .price-container span.price,
+.c-pdp-price span.price {
+    font-weight: bold;
+    font-size: 1.6rem;
+}
+
+.catalog-product-view .product-info-main .c-main-pdp-atb {
+    #product-addtocart-button {
+        height: 60px;
+        font-size: 1rem;
+    }
+    .form-input {
+        height: 60px;
+    }
+}
+
+@media screen and (max-width: 640px) {
+    .c-main-gallery {
+        margin: -1.5rem -1.5rem -1rem -1.5rem;
+    }
+    .c-main-gallery-thumbs {
+        margin: 1.5rem;
+    }
+}
+
+.c-main-gallery.active {
+    position: fixed;
+    z-index: 99999;
+}
+
+.c-pdp-tab [data-content-type='row'][data-appearance='contained'] {
+    margin: 1rem 0;
+    padding: 0;
+}
+
+.c-pdp-options select {
+    width: 100%;
+}
+
+.c-pdp-tabs ul {
+    padding: 0.5rem 0 0.5rem 1.5rem;
+}
+
+.c-pdp-tabs ul li {
+    list-style: disc;
+    padding-left: 0.5rem;
+}
+
+/* Other colours available widget - Zero1 Module  */
+
+.advanced-relations-list ul li {
+    @media screen and (max-width: 1024px) {
+        width: 8.4rem;
+        border: 1px solid;
+        text-align: center;
+        margin-right: 0.5rem;
+        overflow: hidden;
+        border-color: #e5e7eb;
+
+        a {
+            width: 100%; 
+            display: inline-block;
+        }
+
+        img {
+            width: 100%; 
+            height: auto;
+        }
+    }
+}
+
+@media screen and (max-width: 640px) {
+    .advanced-relations-list {overflow-x: auto;width: 100%;margin-right: auto;margin-left: auto;max-width: 1380px;}
+    .advanced-relations-list ul {width: -webkit-max-content;width: -moz-max-content;width: max-content;margin-bottom: 1rem;}
+}
+
+/* Tier Pricing */
+
+.c-tier-pricing-wrapper span {
+    display: inline !important;
+    font-size: 1rem !important;
+}
+
+/* Remove as low as - also done in translate.csv */
+.catalog-category-view .minimal-price-link,
+.c-pdp-price .price-label {
+    display: none;
+}
+
+/* Select on configurables */
+.configurable-select-wrapper select {
+    width: 100%;
+}
+
+/* ===================================================
+** CMS
+=================================================== */
+
+.cms-index-index #maincontent .column.main > [data-content-type='row'][data-appearance='contained'] {
+    padding-left: 0;
+    padding-right: 0;
+}
+
+@media screen and (max-width: 640px) {
+    .cms-index-index #maincontent .columns {
+        padding-left: 0;
+        padding-right: 0;
+    }
+    [data-content-type='image'] {
+        margin-left: 0 !important;
+        margin-right: 0 !important;
+    }
+}
+
+.cms-page-view,
+.cms-no-route {
+    .page-main-title,
+    .column.main {
+        max-width: 1200px;
+        margin: 0 auto;
+    }
+}
+
+.c-noroute {
+    margin: 6rem 0 !important;
+    font-weight: bold;
+}
+
+.contact-index-index {
+
+    #maincontent .columns,
+    .page-main-title {
+        max-width: 1300px;
+    }
+}
+
+@media screen and (max-width: 640px) {
+    .contact-index-index {
+
+        .page-main-title {
+            display: none;
+        }
+
+        .flex-columns-wrapper {
+            margin-top: 0;
+        }
+
+        @media screen and (max-width: 640px) {
+            .card {
+                border: 0;
+                padding: 0;
+            }
+        }
+
+        .btn-primary {
+            justify-content: center;
+            width: 100%;
+            @apply p-4;
+            @apply mt-4
+        }
+
+    }
+}
+
+/* ===================================================
+** Account
+=================================================== */
+
+.c-field-full-wrapper {
+    width: 100%;
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 0 !important;
+
+    .card {
+        border: none;
+        margin: 0;
+
+        @media screen and (max-width: 640px) {
+            padding: 0;
+        }
+
+    }
+
+    .form-input, .form-email, .form-multiselect, .form-textarea {
+        width: 100%;
+    }
+
+    legend.contents {
+        display: none;
+    }
+}
+
+.customer-account-create .page-main-title,
+.customer-account-login .page-main-title {
+    width: 100%;
+    max-width: 1010px;
+}
+
+body.account {
+
+    #maincontent {
+        margin-bottom: 2rem;
+    }
+
+    .page-title {
+        display: none;
+    }
+}
+
+.account-nav {
+    .border.rounded.border-container {
+        border: none;
+    }
+}
+
+@media screen and (max-width: 640px) {
+    .customer-account-index .card {
+        padding: 1rem 0;
+        border-width: 1px 0 0px 0;
+        margin: 0;
+
+        .rounded-full {
+            display: none;
+            svg {
+                display: none;
+            }
+        }
+    }
+}
+
+/* ===================================================
+** Basket
+=================================================== */
+
+.checkout-cart-index {
+
+    #block-shipping {
+        border-width: 0 0 1px 0;
+
+        span {
+            font-weight: normal;
+        }
+    }
+
+    .cart-product-item-wrapper * {
+        color: #333;
+        font-weight: normal;
+    }
+
+    .cart-product-item-wrapper {
+        .price,
+        .product-item-name a {
+            font-weight: bold;
+            color: #000;
+        }
+    }
+
+    #maincontent {
+        .columns,
+        .page-main-title {
+            max-width: 1200px;
+        }
+    }
+
+    /* Move cross sells down a bit */
+    @media screen and (min-width: 1024px) {
+        .c-slider-product-grid {
+            margin-top: 10rem;
+        }
+    }
+}
+
+@media screen and (min-width: 1024px) {
+    .checkout-cart-index #maincontent .columns .column.main > #checkout-link-button {
+        display: none;
+    }
+}
+
+/* ===================================================
+** Footer
+=================================================== */
+
+.mainfootercontent ul li {
+    color: #999;
+    margin: 10px 0;
+    a {
+        @apply text-c-highlight;
+    }
+}
+
+.footer_payment_methods img {
+    margin: 0 auto;
+    width: 100%;
+    max-width: 660px !important;
+    margin: 40px auto 20px auto;
+}
+
+.footer-social a {
+    display: inline-block;
+    margin: 10px 10px 0 0;
+    max-width: 40px;
+
+    img {
+        width: 100%;
+        height: auto;
+    }
+}
+
+.footer-social a:hover {
+    opacity: 0.8;
+}
+
+@media screen and (min-width: 1280px) {
+    .desktop-search {max-width: 20vw;}
+    .main-desktop-navigation {position: absolute !important;top: 4px;left: 22vw;}
+}
+@media screen and (min-width: 1500px) {
+    .main-desktop-navigation {left: 17vw;}
+}
+@media screen and (min-width: 1700px) {
+    .main-desktop-navigation {left: 25vw;}
+}
+
+/* Temporary extra nav item */
+@media screen and (min-width: 1024px) and (max-width: 1279px) {
+    .main-desktop-navigation {font-size: 0.9rem;}
+}
+
+/* ===================================================
+** Homepage
+=================================================== */
+
+/* Set homepage widths */
+
+/* .cms-index-index .columns,
+.cms-index-index #maincontent .column.main>[data-content-type=row][data-appearance=contained] {
+    max-width: 100% !important;
+    width: 100% !important;
+    padding: 0;
+    margin: 0;
+} */
+
+
+/* ===================================================
+** Basket
+=================================================== */
+
+.checkout-cart-index {
+    .columns {
+        padding: 0;
+    }
+
+    .columns .column.main {
+        background: #f2f2f2;
+        padding: 1rem 1.5rem 1.5rem 1.5rem;
+        height: 100vh;
+    }
+    
+    .image.product-image-photo {
+        max-width: 50px;
+    }
+    
+    tbody.cart.item {
+        background: none;
+        border-top: 1px solid #cfcfcf;
+
+        .item-info .col.item {
+            display: block;
+
+            .product-item-photo {
+                float: left; margin-right: 1rem;
+            }
+            .product-item-details {
+                width: 80%;
+            }
+        }
+    }
+    
+    .coupon-form {
+        padding-bottom: 1rem;
+    }
+
+    /* Grand Total */
+    #cart-totals > div:last-child {
+        font-weight: bold;
+    }
+
+    .pos-cart-item-actions .action {
+        height: 50px;
+        border-radius: 50px;
+        border: 1px solid #999;
+        background: #cfcfcf;
+    }
+
+    .pos-cart-item-actions .action svg {
+        display: none;
+    }
+
+    .pos-cart-item-actions .action:before {
+        content: 'Edit';
+        display: block;
+        width: 100%;
+        text-align: center;
+        padding: 0.7rem;
+    }
+
+    .pos-cart-item-actions .action.action-delete {
+        border-color: #d93636;
+        color: #d93636;
+        background: #E5CECE;
+    }
+
+    .pos-cart-item-actions .action.action-delete:before {
+        content: 'Remove';
+    }
+}
+
+/* ===================================================
+** Checkout
+=================================================== */
+
+.hyva_checkout-index-index {
+
+    .page-header {
+        display: none;
+    }
+
+    .columns {
+        padding: 0;
+        gap: 0;
+    }
+
+    #breadcrumbs {
+        display: none !important;
+    }
+
+    #hyva-checkout-container {
+
+        #payment-method-list {
+            li label {
+                justify-content: center;
+            }
+        }
+
+        .column-main {
+            padding: 1rem 2rem;
+        }
+
+        /* Place order button with background */
+        .nav-main > div {
+            background: none;
+        }
+
+        .nav-main .btn-primary {
+            min-height: 70px;
+            font-size: 1rem;
+        }
+
+        .column-right {    
+            padding: 0;
+            margin: 0;
+            height: 100vh;
+        }
+
+        #quote-summary {
+            height: 100vh;
+            background-color: rgb(243 244 246 / var(--tw-bg-opacity));
+        }
+    }
+
+    .newaddress {
+        display: none;
+    }
+    
+}
+
+/* Sub Category Listing */
+/* Scroller which is also scrollable on desktop because there are loads of sub cats - only for DT */
+/* @media screen and (max-width: 640px) { */
+    .sub-category-listing {overflow-x: auto;width: 100%;margin-right: auto;margin-left: auto;max-width: 1380px;}
+    .sub-category-listing ul {width: -webkit-max-content;width: -moz-max-content;width: max-content;margin-bottom: 1rem;}
+/* } */
+

@@ -1,0 +1,14 @@
+<?php
+/** @var \Zero1\SubCategoryListing\Block\View $block */
+?>
+<?php if ($block->showSubCategoryListing()) : ?>
+    <div class="sub-category-listing text-left mt-6">
+		<ul>
+			<?php foreach ($block->getCurrentCategoryChildren() as $currentCategoryChild) : ?>
+		    	<li class="inline-flex mb-4">
+		            <a class="border border-c-primary-cta bg-c-highlight px-6 md:px-4 py-3 md:py-1 font-bold text-center c-rounded mr-2" href="<?php echo $block->escapeUrl($currentCategoryChild->getUrl()); ?>"><?php echo $block->escapeHtml($currentCategoryChild->getName()); ?></a>
+		        </li>
+			<?php endforeach; ?>
+		</ul>
+    </div>
+<?php endif; ?>

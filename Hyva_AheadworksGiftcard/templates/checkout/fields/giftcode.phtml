@@ -1,0 +1,72 @@
+<?php
+// @codingStandardsIgnoreFile
+
+/** @var $block Aheadworks\Giftcard\Block\Checkout\Cart\Giftcard */
+?>
+<div class="mx-auto md:mx-0 my-2" x-data="awGiftCardManagement()">
+    <?= /** @noEscape */ $block->getChildHtml('aw_giftcard_loading') ?>
+    <div class="mb-4 cursor-pointer text-primary-lighter select-none whitespace-nowrap" @click="toggleShowCoupon()">
+        <span class="underline" role="heading" aria-level="2">
+            <?php echo $block->escapeHtml(__('Gift Cards')) ?>
+        </span>
+        <svg xmlns="http://www.w3.org/2000/svg" fill="none" class="w-4 h-4 inline-block ml-2"
+             viewBox="0 0 24 24" stroke="currentColor">
+            <path x-show="!showCouponForm" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                  d="M19 9l-7 7-7-7"/>
+            <path
+                x-show="showCouponForm" x-cloak stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                d="M5 15l7-7 7 7"/>
+        </svg>
+    </div>
+    <div x-show="!showCouponForm" >
+        <?php echo $block->getChildHtml('giftcard_codes') ?>
+        <div id="aw_giftcard__code_info"></div>
+        <form id="discount-aw-giftcard-form"
+              method="post"
+              class="my-4 card">
+            <?php echo $block->getBlockHtml('formkey')?>
+            <div class="fieldset aw-giftcard">
+                <div class="field">
+                    <div class="control">
+                        <input type="hidden" name="redirect_to" value="checkout">
+                        <input type="text"
+                               class="w-full form-input disabled:opacity-75 disabled:bg-gray-100 disabled:pointer-events-none"
+                               name="code"
+                               placeholder="<?php echo $block->escapeHtml(__('Enter Gift Card code')) ?>"
+                               required="required" />
+                    </div>
+                </div>
+                <div class="actions-toolbar flex-wrap !flex-row">
+                    <div class="primary m-1">
+                        <button class="btn-primary"
+                                type="submit"
+                                @click="onSubmitForm($event)"
+                                value="<?php echo $block->escapeHtml(__('Apply')) ?>"
+                                data-role="aw-giftcard-apply-action"
+                                data-url="<?php /* @noEscape */ echo $block->escapeUrl($block->getActionUrl()) ?>">
+                            <?php echo $block->escapeHtml(__('Apply')) ?>
+                        </button>
+                    </div>
+                    <div class="secondary m-1">
+                        <button class="btn"
+                                type="submit"
+                                value="<?php echo $block->escapeHtml(__('Check Status')) ?>"
+                                data-role="aw-giftcard-check-code-action"
+                                @click="onClickCheckCode($event)"
+                                data-url="<?php /* @noEscape */ echo $block->escapeUrl($block->getCheckCodeUrl()) ?>">
+                            <?php echo $block->escapeHtml(__('Check Status')) ?>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+
+<script>
+    function awGiftCardManagement() {
+        return {
+            showCouponForm: false,
+        };
+    }
+</script>

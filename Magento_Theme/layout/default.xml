@@ -1,0 +1,25 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Hyvä Themes - https://hyva.io
+ * Copyright © Hyvä Themes 2020-present. All rights reserved.
+ * This product is licensed per Magento install
+ * See https://hyva.io/license
+ */
+-->
+<page layout="3columns" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+    <body>
+
+        <referenceBlock name="topmenu_desktop" remove="true" />
+        <referenceBlock name="topContainer" remove="true" />
+        <referenceBlock name="header-search" remove="true" />
+        <referenceBlock name="store-credit-ajax" remove="true" />
+
+        <referenceBlock name="checkout.success.print.button" remove="true" />
+    
+
+        <referenceBlock name="logo" remove="true" />
+        <referenceBlock name="top.search" remove="true" />
+        <referenceBlock name="checkout.cart.shipping" remove="true" />
+    </body>
+</page>

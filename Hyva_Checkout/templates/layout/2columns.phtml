@@ -1,0 +1,32 @@
+<?php
+/**
+ * Hyvä Themes - https://hyva.io
+ * Copyright © Hyvä Themes 2022-present. All rights reserved.
+ * This product is licensed per Magento install
+ * See https://hyva.io/license
+ */
+
+declare(strict_types=1);
+
+use Magento\Framework\View\Element\Template;
+
+/** @var Template $block */
+?>
+<div class="flex flex-col space-y-6 md:space-x-6 lg:flex-row">
+    <div class="column column-main w-full space-y-6 lg:w-2/3">
+        
+        <div class="container flex flex-col md:flex-row flex-wrap my-4 font-bold  p-0 relative">
+            <h1 class="text-gray-900 page-title title-font text-3xl">
+                <span>Checkout</span>
+            </h1>
+            <a href="/checkout/cart/index" class="absolute right-0 top-4 font-normal text-sm">&lt; Back to basket</a>
+        </div>
+
+        <?= $block->getChildHtml('column.main') ?>
+        <?= $block->getChildHtml('hyva.checkout.navigation') ?>
+    </div>
+
+    <div class="column column-right w-full space-y-6 lg:w-1/3">
+        <?= $block->getChildHtml('column.right') ?>
+    </div>
+</div>

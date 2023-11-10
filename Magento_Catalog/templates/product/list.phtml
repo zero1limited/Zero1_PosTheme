@@ -1,0 +1,80 @@
+<?php
+/**
+ * Hyvä Themes - https://hyva.io
+ * Copyright © Hyvä Themes 2020-present. All rights reserved.
+ * This product is licensed per Magento install
+ * See https://hyva.io/license
+ */
+
+use Hyva\Theme\Model\ViewModelRegistry;
+use Hyva\Theme\ViewModel\CurrentCategory;
+use Hyva\Theme\ViewModel\ProductListItem;
+use Hyva\Theme\ViewModel\ProductPage;
+use Magento\Catalog\Block\Product\ListProduct;
+use Magento\Framework\Escaper;
+
+/** @var ListProduct $block */
+/** @var Escaper $escaper */
+/** @var ViewModelRegistry $viewModels */
+/** @var ProductPage $productViewModel */
+/** @var CurrentCategory $currentCategoryViewModel */
+
+$productViewModel         = $viewModels->require(ProductPage::class);
+$productListItemViewModel = $viewModels->require(ProductListItem::class);
+$currentCategoryViewModel = $viewModels->require(CurrentCategory::class);
+
+$hideRatingSummary = (bool) $block->getData('hide_rating_summary');
+$hideDetails = (bool) $block->getData('hideDetails');
+$eagerLoadImagesCount = (int) ($block->getData('eager_load_images_count') ?? 3);
+
+$productCollection = $block->getLoadedProductCollection();
+
+?>
+<?php if (!$productCollection->count()): ?>
+    <div class="message info empty">
+        <div>
+            <?= $escaper->escapeHtml(__('We can\'t find products matching the selection.')) ?>
+        </div>
+    </div>
+<?php else: ?>
+    <section class="py-0">
+        <?php
+        if ($block->getMode() == 'grid') {
+            $viewMode         = 'grid';
+            $imageDisplayArea = 'category_page_grid';
+            $showDescription  = false;
+            $templateType     = \Magento\Catalog\Block\Product\ReviewRendererInterface::SHORT_VIEW;
+        } else {
+            $viewMode         = 'list';
+            $imageDisplayArea = 'category_page_list';
+            $showDescription  = true;
+            $templateType     = \Magento\Catalog\Block\Product\ReviewRendererInterface::FULL_VIEW;
+        }
+        /**
+         * Position for actions regarding image size changing in vde if needed
+         */
+        $pos = $block->getPositioned();
+        ?>
+        <div class="products wrapper mode-<?= /* @noEscape */$viewMode ?> products-<?= /* @noEscape */$viewMode ?>">
+            <div class="mx-auto pt-4 pb-12 grid gap-4 grid-cols-2 <?= /* @noEscape */$viewMode === 'grid'
+                ? 'sm:grid-cols-3 md:grid-cols-4 xl:grid-cols-5'
+                : '' ?>">
+                <?php
+                /** @var \Magento\Catalog\Model\Product $product */
+                foreach (array_values($productCollection->getItems()) as $i => $product) {
+                    if ($i < $eagerLoadImagesCount) {
+                        $product->setData('image_custom_attributes', ['loading' => 'eager', 'fetchpriority' => 'high']);
+                    }
+                    echo $productListItemViewModel->getItemHtml(
+                        $product,
+                        $block,
+                        $viewMode,
+                        $templateType,
+                        $imageDisplayArea,
+                        $showDescription
+                    );
+                } ?>
+            </div>
+        </div>
+    </section>
+<?php endif; ?>

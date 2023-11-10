@@ -1,0 +1,288 @@
+/* ======================================
+** Page Widths Override
+====================================== */
+
+/* Overridden in core Hyvä in structure.css in tailwind/components */
+/* We'll make sure this matches the main page width from tailwind.config */
+.product-main-full-width .columns {
+    @apply max-w-screen-2xl
+}
+
+/* ======================================
+** Body Background Colour
+====================================== */
+
+body {
+    background-color: #fff;
+}
+
+/* ======================================
+** Base Font Size
+====================================== */
+
+html {
+    font-size: 13px;
+}
+
+/* ======================================
+** Remove border-radius
+====================================== */
+
+.rounded,.rounded-lg,.rounded-md,.rounded-none,.rounded-sm{border-radius:0}.rounded-t,.rounded-t-full,.rounded-t-lg,.rounded-t-md,.rounded-t-none,.rounded-t-sm{border-top-left-radius:0;border-top-right-radius:0}.rounded-r,.rounded-r-full,.rounded-r-lg,.rounded-r-md,.rounded-r-none,.rounded-r-sm{border-top-right-radius:0;border-bottom-right-radius:0}.rounded-b,.rounded-b-full,.rounded-b-lg,.rounded-b-md,.rounded-b-none,.rounded-b-sm{border-bottom-right-radius:0;border-bottom-left-radius:0}.rounded-l,.rounded-l-full,.rounded-l-lg,.rounded-l-md,.rounded-l-none,.rounded-l-sm{border-top-left-radius:0;border-bottom-left-radius:0}.rounded-tl,.rounded-tl-full,.rounded-tl-lg,.rounded-tl-md,.rounded-tl-none,.rounded-tl-sm{border-top-left-radius:0}.rounded-tr,.rounded-tr-full,.rounded-tr-lg,.rounded-tr-md,.rounded-tr-none,.rounded-tr-sm{border-top-right-radius:0}.rounded-br,.rounded-br-full,.rounded-br-lg,.rounded-br-md,.rounded-br-none,.rounded-br-sm{border-bottom-right-radius:0}.rounded-bl,.rounded-bl-full,.rounded-bl-lg,.rounded-bl-md,.rounded-bl-none,.rounded-bl-sm{border-bottom-left-radius:0}
+
+/* Elements with the class "rounded-full" are generally icon based such as the small circle (indicator icon) before stock availability...
+This can look slightly strange if these have no border radius so we've removed that class from the list above */
+/* .rounded-full {border-radius: 0;} */
+
+/* ======================================
+** Buttons
+** NOTE: for primary & secondary CTA colours, see tailwind.config.js - backgroundColor
+====================================== */
+
+.btn {
+    border-radius: 0;
+    box-shadow: none;
+}
+
+/* Hover state for all buttons */
+
+.btn:hover {
+    box-shadow: none;
+}
+
+/* Reset the "secondary" buttons as these are overwritten in for some reason /components/button.css */
+
+.btn-secondary,
+.btn-secondary:hover {
+    border-width: 0;
+    @apply bg-primary;
+    color: #fff;
+}
+
+/* ======================================
+** Action Buttons
+====================================== */
+
+/* Not primary or secondary CTAs - Available with c-action (use for "edit" buttons etc) */
+
+.c-action {
+    @apply bg-c-action;
+    color: #333;
+}
+
+.c-action:hover {
+    @apply bg-c-action-hover-state;
+}
+
+/* ======================================
+** Form fields 
+====================================== */
+
+.form-input, .form-email, .form-multiselect, .form-textarea {
+    border-radius: 0; 
+    /* width: 100%; */
+    box-shadow: none;
+
+    height: 45px;
+}
+
+.form-select {
+    border-radius: 0; 
+    box-shadow: none;
+
+    height: 45px;
+}
+
+/* Input field focus - remove ugly blue border / shadow? */
+
+[type='text']:focus, [type='email']:focus, [type='url']:focus, [type='password']:focus, [type='number']:focus, [type='date']:focus, [type='datetime-local']:focus, [type='month']:focus, [type='search']:focus, [type='tel']:focus, [type='time']:focus, [type='week']:focus, [multiple]:focus, textarea:focus, select:focus {
+    border-color: #D1D5DB;
+    --tw-ring-offset-shadow: none;
+    box-shadow: none;
+}
+
+/* Selects focus - remove ugly blue border / shadow? */
+
+.form-input:focus, .form-email:focus, .form-select:focus, .form-multiselect:focus, .form-textarea:focus {
+    box-shadow: none;
+    --tw-ring-shadow: none;
+}
+
+/* Important !!...
+If you're using an iphone and clicking on search for example, it will automatically zoom in if the form fields have a font-size less than 16px
+Only seems to be an issue on iPhones so will add this in for that reason
+*/
+
+@media screen and (max-width: 640px) {
+    @media screen and (-webkit-min-device-pixel-ratio:0) { 
+        .form-input, .form-email, .form-multiselect, .form-textarea, #search {
+          font-size: 16px;
+        }
+    }
+}
+
+/* ======================================
+** Cards
+====================================== */
+
+.card {
+    border-radius: 0; 
+    box-shadow: none;
+    border: 1px solid #D1D5DB; /* Should match "borderColor / container" in tailwind.config.js */
+}
+
+/* card-interactive gives a slight grey background when hovered on. 
+Let's remove it and keep it the same as the card.. */
+
+.card-interactive:hover {
+    background-color: #fff;
+}
+
+/* ======================================
+** Category Description
+====================================== */
+
+/* Overridden in core Hyvä in category-page.css in tailwind/components */
+/* We'll make sure this goes full width */
+
+.category-description {
+    @apply max-w-full;
+}
+
+/* ======================================
+** Messages
+====================================== */
+
+.message {
+    @apply flex items-center justify-between w-full p-2 bg-gray-600 shadow rounded text-white mb-2;
+}
+
+.message {
+    &.error {
+        @apply bg-red-500;
+    }
+
+    &.success {
+        @apply bg-c-primary-cta;
+    }
+
+    &.info,
+    &.warning,
+    &.notice {
+        @apply bg-yellow-500;
+    }
+
+    a {
+        @apply underline
+    }
+}
+
+/* ======================================
+** PageBuilder
+====================================== */
+
+/* Remove padding from specific divs inside Rows */
+[data-content-type='row'] {
+    /* @apply box-border; */
+
+    & > div {
+        @apply p-0;
+        @apply mb-0;
+    }
+
+    /* &[data-appearance='contained'] {
+        @apply container;
+        @apply box-border ml-auto mr-auto;
+
+        [data-element='inner'] {
+            @apply box-border;
+            background-attachment: scroll !important;
+        }
+    }
+
+    &[data-appearance='full-bleed'] {
+        background-attachment: scroll !important;
+    }
+
+    &[data-appearance='full-width'] {
+        background-attachment: scroll !important;
+
+        > .row-full-width-inner {
+            @apply container;
+        }
+    } */
+}
+
+/* Remove margin & padding on rows for mobiles */
+@media screen and (max-width: 640px) {
+    [data-content-type='row'] {
+        &[data-appearance='contained'] {
+            @apply m-0;
+            @apply p-0;
+        }
+    }
+}
+
+
+/* ======================================
+** Pricing
+====================================== */
+
+/* TODO....
+Copy price files from tailwind/components and manipulate as needed */
+
+/* ======================================
+** Primary CTAs
+====================================== */
+
+/* Primary CTA buttons */
+
+.c-primary-cta {
+    @apply bg-c-primary-cta;
+    @apply text-sm;
+    @apply font-bold;
+    text-transform: uppercase;
+    width: 100%;
+    padding: 1rem;
+    justify-content: center;
+
+    height: 45px; /* Set this on form elements too so they're aligned whenever together */
+
+}
+
+/* Declare what buttons need the primary CTA styling */
+
+.catalog-category-view .product-info .btn-primary,
+.catalog-product-view .product-info-main #product-addtocart-button,
+.cart-summary #checkout-link-button,
+/* Below 2 are targetting only checkout button in cart drawer */
+.btn-primary, 
+.btn-primary[href$="checkout/"],
+.btn-primary[href^="http"][href$="checkout/"],
+.btn-primary[href^="http"][href$="checkout/index/index"] {
+    @apply c-primary-cta;
+
+    /* Remove icon? */
+
+    span {
+        margin: 0;
+        text-align: center;
+        display: inline-block !important;
+        width: 100%;
+    }
+    svg {
+        display: none;
+    }
+}
+
+/* Declare summary count in header for primary CTA background colour */
+
+#header #menu-cart-icon span[x-text="cart.summary_count"] {
+    @apply bg-c-primary-cta;
+}
+
+/* Primary CTA buttons hover state */
+
+.c-primary-cta:hover {
+    @apply bg-c-primary-hover-state;
+}

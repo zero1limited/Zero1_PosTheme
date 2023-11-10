@@ -1,0 +1,87 @@
+<?php
+/**
+ * Hyvä Themes - https://hyva.io
+ * Copyright © Hyvä Themes 2020-present. All rights reserved.
+ * This product is licensed per Magento install
+ * See https://hyva.io/license
+ */
+
+declare(strict_types=1);
+
+use Hyva\Theme\Model\ViewModelRegistry;
+use Magento\Framework\Escaper;
+use Magento\Framework\View\Element\Template;
+use Magento\LoginAsCustomerFrontendUi\ViewModel\Configuration;
+
+/**
+ * @var Template $block
+ * @var Escaper $escaper
+ * @var ViewModelRegistry $viewModels
+ */
+$viewFileUrl = $block->getViewFileUrl('Magento_LoginAsCustomerFrontendUi::images/magento-icon.svg');
+
+/** @var Configuration $configurationViewModel */
+$configurationViewModel = $viewModels->require(Configuration::class);
+if (!$configurationViewModel->isEnabled()) {
+    return;
+}
+?>
+<div class="bg-c-black"
+     x-data="initLoginAsCustomer()"
+     @private-content-loaded.window="receiveCustomerData(event.detail.data)"
+>
+    <div id="LoginAsCustomer" class="container mx-auto py-1 px-1 sm:px-6 lg:px-8" x-show="isVisible">
+        <div class="flex items-center justify-between flex-wrap">
+            <div class="w-0 flex-1 flex items-center">
+                <span class="flex p-2">
+                   
+                    <svg id="Layer_1" xmlns="http://www.w3.org/2000/svg"  height="6.84mm" viewBox="0 0 42.46 10.88"><path d="m21.67,0c-6.23,0-11.28,1.88-11.28,5.44s5.05,5.44,11.28,5.44,11.28-1.9,11.28-5.44S27.9,0,21.67,0Zm0,9.82c-4.53,0-8.38-1.53-8.38-4.39s3.85-4.38,8.38-4.38,8.35,1.51,8.35,4.39-3.81,4.39-8.35,4.38Z" style="fill:#fff; stroke-width:0px;"/><path d="m20.72,8.44V2.53c0-.48,1.9-.42,1.9-.04v5.99c0,.39-1.9.45-1.9-.05h0Z" style="fill:#c1c1c1; stroke-width:0px;"/><path d="m9.1,4.01c0,2.34-1.75,3.8-4.56,3.8h-2.11v2.89H0V.2h4.54c2.81,0,4.56,1.46,4.56,3.81Zm-2.46,0c0-1.15-.75-1.83-2.23-1.83h-1.98v3.64h1.98c1.48,0,2.23-.67,2.23-1.81Z" style="fill:#fff; stroke-width:0px;"/><path d="m33.74,9.66l.83-1.83c.88.64,2.21,1.09,3.46,1.09,1.44,0,2.02-.48,2.02-1.12,0-1.97-6.1-.62-6.1-4.52,0-1.79,1.44-3.27,4.42-3.27,1.32,0,2.67.31,3.64.93l-.75,1.84c-.97-.55-1.98-.82-2.91-.82-1.44,0-2,.54-2,1.2,0,1.94,6.1.6,6.1,4.46,0,1.75-1.46,3.25-4.46,3.25-1.66,0-3.34-.5-4.27-1.22Z" style="fill:#fff; stroke-width:0px;"/></svg>
+
+                </span>
+                <p class="ml-3 font-bold text-white truncate">
+                    <span x-text="notificationText"></span> <span class="font-normal"> is currently being served</span>
+                </p>
+            </div>
+            <div class="order-2 shrink-0 sm:order-3 sm:ml-3">
+                <?= $block->getChildHtml('login-as-customer-notice-links') ?>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    "use strict";
+
+    function initLoginAsCustomer() {
+        return {
+            isVisible: false,
+            adminUserId: null,
+            websiteName: null,
+            fullname: null,
+            notificationText: '',
+            receiveCustomerData: function receiveCustomerData(data) {
+                if (data.customer) {
+                    this.fullname = data.customer.fullname;
+                }
+
+                if (data.loggedAsCustomer) {
+                    this.adminUserId = data.loggedAsCustomer.adminUserId;
+                    this.websiteName = data.loggedAsCustomer.websiteName;
+                }
+
+                this.updateBanner();
+            },
+
+            updateBanner: function updateBanner() {
+                this.isVisible = !!this.adminUserId;
+
+                if (this.fullname !== undefined && this.websiteName !== undefined) {
+                    this.notificationText = '<?=
+                        $escaper->escapeHtml(__('<strong>%1</strong> '), ['<strong>']) ?>'
+                        .replace('%1', this.fullname)
+                        .replace('%2', this.websiteName);
+                }
+            }
+        }
+    }
+</script>

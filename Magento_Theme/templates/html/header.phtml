@@ -1,0 +1,121 @@
+<?php
+/**
+ * Hyvä Themes - https://hyva.io
+ * Copyright © Hyvä Themes 2020-present. All rights reserved.
+ * This product is licensed per Magento install
+ * See https://hyva.io/license
+ */
+
+declare(strict_types=1);
+
+use Hyva\Theme\Model\ViewModelRegistry;
+use Hyva\Theme\ViewModel\HeroiconsOutline;
+use Magento\Framework\Escaper;
+use Magento\Framework\View\Element\Template;
+
+/** @var Escaper $escaper */
+/** @var Template $block */
+/** @var ViewModelRegistry $viewModels */
+
+/** @var HeroiconsOutline $heroicons */
+$heroicons = $viewModels->require(HeroiconsOutline::class);
+
+/** @var Hyva\Theme\ViewModel\StoreConfig $storeConfig */
+$storeConfig = $viewModels->require(Hyva\Theme\ViewModel\StoreConfig::class);
+$showMiniCart = $storeConfig->getStoreConfig(\Magento\Checkout\Block\Cart\Sidebar::XML_PATH_CHECKOUT_SIDEBAR_DISPLAY);
+?>
+<script>
+    function initHeader () {
+        return {
+            searchOpen: true,
+            cart: {},
+            getData(data) {
+                if (data.cart) { this.cart = data.cart }
+            }
+        }
+    }
+    function initCompareHeader() {
+        return {
+            compareProducts: null,
+            itemCount: 0,
+            receiveCompareData(data) {
+                if (data['compare-products']) {
+                    this.compareProducts = data['compare-products'];
+                    this.itemCount = this.compareProducts.count;
+                }
+            }
+        }
+    }
+</script>
+<div id="header"
+     class="relative z-30 w-full border-b shadow bg-container-lighter border-container-lighter"
+     x-data="initHeader()"
+     @keydown.window.escape="searchOpen = false;"
+     @private-content-loaded.window="getData(event.detail.data)"
+>
+    <div class="container flex items-center justify-between w-full px-6 py-2 mx-auto mt-0">
+
+        <!--Main Navigation-->
+        <?= $block->getChildHtml('topmenu') ?>
+
+        <div class="order-2 w-full">
+            <!-- Auto add -->
+            <?= $block->getChildHtml('auto.add'); ?>
+        </div>
+        
+        <!--Search-->
+        <?php /*
+        <div class="order-2 w-full"
+            id="search-content"
+            :class="{ 'block': searchOpen}" x-cloak x-show="searchOpen"
+            @click.outside="searchOpen = true"
+        >
+            <?= $block->getChildHtml('header-search'); ?>
+        </div>  
+        */ ?>
+
+
+        <div class="flex items-center order-3">
+
+            <!--Customer Icon & Dropdown-->
+            <?php /*
+            <?= $block->getChildHtml('customer') ?>
+            */ ?>
+
+            <!--Cart Icon-->
+            <a id="menu-cart-icon"
+               <?php if ($showMiniCart): ?>@click.prevent.stop="$dispatch('toggle-cart',{});"<?php endif ?>
+               class="relative inline-block ml-1 no-underline sm:ml-3 hover:text-black"
+               href="<?= $escaper->escapeUrl($block->getUrl('checkout/cart/index')) ?>"
+            >
+                <span class="sr-only label">
+                    <?= $escaper->escapeHtml(__('Cart')) ?>
+                </span>
+
+                <?= $heroicons->shoppingCartHtml(
+                    "w-8 h-8 md:h-6 md:w-6 hover:text-black",
+                    25,
+                    25
+                ) ?>
+
+                <span x-text="cart.summary_count"
+                      class="absolute top-0 right-0 hidden h-5 px-2 py-1 -mt-5 -mr-4 text-xs font-semibold
+                        leading-none text-center text-white uppercase transform -translate-x-1
+                        translate-y-1/2 rounded-full bg-primary"
+                      :class="{
+                        'hidden': !cart.summary_count,
+                        'block': cart.summary_count }"
+                ></span>
+            </a>
+
+        </div>
+    </div>
+
+    <!--Cart Drawer-->
+    <?= $block->getChildHtml('cart-drawer'); ?>
+
+    <!--Authentication Pop-Up-->
+    <?= $block->getChildHtml('authentication-popup'); ?>
+
+</div>
+
