@@ -1,0 +1,22 @@
+{
+    "name": "zero1/pos-theme",
+    "description": "A theme for the ZERO-1 POS Electronic Point Of Sale",
+    "config": {
+        "sort-packages": true
+    },
+    "require": {
+        "php": ">=7.3.0",
+        "magento/framework": ">=102.0.0"
+    },
+    "type": "magento2-theme",
+    "authors": [{
+        "name": "ZERO-1 Ltd",
+        "email": "sales@zero1.co.uk"
+    }],
+    "license": "see LICENSE.md",
+    "autoload": {
+        "files": [
+            "registration.php"
+        ]
+    }
+}
