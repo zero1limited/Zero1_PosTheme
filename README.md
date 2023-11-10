@@ -13,6 +13,9 @@ Restrict access to admin session only
 
 ## Feature TODO List
 
+ - [ ] Set dependency on Hyvä default theme
+ - [ ] Set dependency on Zero1 POS module
+ - [ ] Add composer.json
  - [ ] Add something to the basket when there's no items in there (widget of popular products?)
  - [ ] Create "walk-in" or "guest" customer as part of module's installation. This will allow me to check this on the frontend for customer account changes
  - [ ] Customer account changes - only show recent sales in customer account if customer is "walk-in" or "guest" (as above)
