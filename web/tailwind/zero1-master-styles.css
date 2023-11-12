@@ -286,3 +286,7 @@ Copy price files from tailwind/components and manipulate as needed */
 .c-primary-cta:hover {
     @apply bg-c-primary-hover-state;
 }
+
+#payment-method-list li.active {
+    color:red;
+}
