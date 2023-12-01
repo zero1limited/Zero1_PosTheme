@@ -112,6 +112,10 @@ $imageCustomAttributes = $product->getData('image_custom_attributes')
             </a>
         </div>
 
+        <?php if ($product->isAvailable() && !$hideDetails): ?>
+            <?= $block->getProductDetailsHtml($product) ?>
+        <?php endif; ?>
+
         <script>
             function initPriceBox_<?= /** @noEscape */ $uniqueId ?>()
             {
