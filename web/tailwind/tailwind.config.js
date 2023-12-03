@@ -63,7 +63,8 @@ module.exports = hyvaModules.mergeTailwindConfig({
         'c-action-hover-state': '#cfcfcf',
         'c-highlight': '#f2f2f2',
         'c-sale': '#d93636',
-        'c-black': '#242426'
+        'c-black': '#242426',
+        'pos-blue': '#034c8c'
       },
       textColor: {
         orange: colors.orange,
