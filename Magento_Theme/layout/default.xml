@@ -14,12 +14,17 @@
         <referenceBlock name="topContainer" remove="true" />
         <referenceBlock name="header-search" remove="true" />
         <referenceBlock name="store-credit-ajax" remove="true" />
-
         <referenceBlock name="checkout.success.print.button" remove="true" />
-    
-
         <referenceBlock name="logo" remove="true" />
         <referenceBlock name="top.search" remove="true" />
         <referenceBlock name="checkout.cart.shipping" remove="true" />
+
+        <move element="login-as-customer-notice" destination="header-content" />
+
+        <referenceContainer name="header.container">
+            <container name="openposheader" as="openposheader" htmlTag="div" htmlClass="openpos-header border-b" after="header-content">
+            </container>
+        </referenceContainer>
+
     </body>
 </page>
