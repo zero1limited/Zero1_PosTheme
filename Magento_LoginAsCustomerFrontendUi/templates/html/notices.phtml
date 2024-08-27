@@ -26,11 +26,11 @@ if (!$configurationViewModel->isEnabled()) {
     return;
 }
 ?>
-<div class="bg-pos-blue"
+<div class="bg-pos-blue border-l border-r border-white mx-2 px-4"
      x-data="initLoginAsCustomer()"
      @private-content-loaded.window="receiveCustomerData(event.detail.data)"
 >
-    <div id="LoginAsCustomer" class="container mx-auto py-1 px-1 sm:px-6 lg:px-8" x-show="isVisible">
+    <div id="LoginAsCustomer" class="container mx-auto py-1 px-1 sm:px-6 lg:px-0" x-show="isVisible">
         <div class="flex items-center justify-between flex-wrap">
             <div class="w-0 flex-1 flex items-center">
                 <span class="flex p-3">
