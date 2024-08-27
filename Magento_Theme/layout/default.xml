@@ -19,7 +19,7 @@
         <referenceBlock name="top.search" remove="true" />
         <referenceBlock name="checkout.cart.shipping" remove="true" />
 
-        <move element="login-as-customer-notice" destination="header-content" />
+        <!-- <move element="login-as-customer-notice" destination="header-content" /> -->
 
         <referenceContainer name="header.container">
             <container name="openposheader" as="openposheader" htmlTag="div" htmlClass="openpos-header border-b" after="header-content">
