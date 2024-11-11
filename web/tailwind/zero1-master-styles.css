@@ -28,7 +28,15 @@ html {
 ** Remove border-radius
 ====================================== */
 
-.rounded,.rounded-lg,.rounded-md,.rounded-none,.rounded-sm{border-radius:0}.rounded-t,.rounded-t-full,.rounded-t-lg,.rounded-t-md,.rounded-t-none,.rounded-t-sm{border-top-left-radius:0;border-top-right-radius:0}.rounded-r,.rounded-r-full,.rounded-r-lg,.rounded-r-md,.rounded-r-none,.rounded-r-sm{border-top-right-radius:0;border-bottom-right-radius:0}.rounded-b,.rounded-b-full,.rounded-b-lg,.rounded-b-md,.rounded-b-none,.rounded-b-sm{border-bottom-right-radius:0;border-bottom-left-radius:0}.rounded-l,.rounded-l-full,.rounded-l-lg,.rounded-l-md,.rounded-l-none,.rounded-l-sm{border-top-left-radius:0;border-bottom-left-radius:0}.rounded-tl,.rounded-tl-full,.rounded-tl-lg,.rounded-tl-md,.rounded-tl-none,.rounded-tl-sm{border-top-left-radius:0}.rounded-tr,.rounded-tr-full,.rounded-tr-lg,.rounded-tr-md,.rounded-tr-none,.rounded-tr-sm{border-top-right-radius:0}.rounded-br,.rounded-br-full,.rounded-br-lg,.rounded-br-md,.rounded-br-none,.rounded-br-sm{border-bottom-right-radius:0}.rounded-bl,.rounded-bl-full,.rounded-bl-lg,.rounded-bl-md,.rounded-bl-none,.rounded-bl-sm{border-bottom-left-radius:0}
+.rounded,.rounded-lg,.rounded-md,.rounded-none,.rounded-sm{border-radius:4px}
+.rounded-t,.rounded-t-full,.rounded-t-lg,.rounded-t-md,.rounded-t-none,.rounded-t-sm{border-top-left-radius:4px;border-top-right-radius:4px}
+.rounded-r,.rounded-r-full,.rounded-r-lg,.rounded-r-md,.rounded-r-none,.rounded-r-sm{border-top-right-radius:4px;border-bottom-right-radius:4px}
+.rounded-b,.rounded-b-full,.rounded-b-lg,.rounded-b-md,.rounded-b-none,.rounded-b-sm{border-bottom-right-radius:4px;border-bottom-left-radius:4px}
+.rounded-l,.rounded-l-full,.rounded-l-lg,.rounded-l-md,.rounded-l-none,.rounded-l-sm{border-top-left-radius:4px;border-bottom-left-radius:4px}
+.rounded-tl,.rounded-tl-full,.rounded-tl-lg,.rounded-tl-md,.rounded-tl-none,.rounded-tl-sm{border-top-left-radius:4px}
+.rounded-tr,.rounded-tr-full,.rounded-tr-lg,.rounded-tr-md,.rounded-tr-none,.rounded-tr-sm{border-top-right-radius:4px}
+.rounded-br,.rounded-br-full,.rounded-br-lg,.rounded-br-md,.rounded-br-none,.rounded-br-sm{border-bottom-right-radius:4px}
+.rounded-bl,.rounded-bl-full,.rounded-bl-lg,.rounded-bl-md,.rounded-bl-none,.rounded-bl-sm{border-bottom-left-radius:4px}
 
 /* Elements with the class "rounded-full" are generally icon based such as the small circle (indicator icon) before stock availability...
 This can look slightly strange if these have no border radius so we've removed that class from the list above */
@@ -40,7 +48,7 @@ This can look slightly strange if these have no border radius so we've removed t
 ====================================== */
 
 .btn {
-    border-radius: 0;
+    border-radius: 4px;
     box-shadow: none;
 }
 
@@ -54,9 +62,9 @@ This can look slightly strange if these have no border radius so we've removed t
 
 .btn-secondary,
 .btn-secondary:hover {
-    border-width: 0;
-    @apply bg-primary;
-    color: #fff;
+    border-width: 1px;
+    @apply bg-c-secondary-cta;
+    @apply border-c-secondary-cta-border;
 }
 
 /* ======================================
@@ -79,18 +87,18 @@ This can look slightly strange if these have no border radius so we've removed t
 ====================================== */
 
 .form-input, .form-email, .form-multiselect, .form-textarea {
-    border-radius: 0; 
+    border-radius: 4px;
     /* width: 100%; */
     box-shadow: none;
 
-    height: 45px;
+    height: 55px;
 }
 
 .form-select {
-    border-radius: 0; 
+    border-radius: 4px;
     box-shadow: none;
 
-    height: 45px;
+    height: 55px;
 }
 
 /* Input field focus - remove ugly blue border / shadow? */
@@ -126,9 +134,10 @@ Only seems to be an issue on iPhones so will add this in for that reason
 ====================================== */
 
 .card {
-    border-radius: 0; 
+    border-radius: 4px;
     box-shadow: none;
     border: 1px solid #D1D5DB; /* Should match "borderColor / container" in tailwind.config.js */
+    overflow: hidden;
 }
 
 /* card-interactive gives a slight grey background when hovered on. 
@@ -239,15 +248,14 @@ Copy price files from tailwind/components and manipulate as needed */
 
 .c-primary-cta {
     @apply bg-c-primary-cta;
+    @apply text-c-primary-cta-text;
     @apply text-sm;
     @apply font-bold;
-    text-transform: uppercase;
+    text-transform: capitalize;
     width: 100%;
     padding: 1rem;
     justify-content: center;
-
-    height: 45px; /* Set this on form elements too so they're aligned whenever together */
-
+    height: 55px; /* Set this on form elements too so they're aligned whenever together */
 }
 
 /* Declare what buttons need the primary CTA styling */
@@ -271,7 +279,7 @@ Copy price files from tailwind/components and manipulate as needed */
         width: 100%;
     }
     svg {
-        display: none;
+        /* display: none; */
     }
 }
 
@@ -284,9 +292,299 @@ Copy price files from tailwind/components and manipulate as needed */
 /* Primary CTA buttons hover state */
 
 .c-primary-cta:hover {
-    @apply bg-c-primary-hover-state;
+    @apply bg-c-primary-cta-hover;
 }
 
-#payment-method-list li.active {
-    color:red;
+.btn-secondary {
+    @apply bg-c-secondary-cta;
+    @apply text-c-secondary-cta-text;
+    @apply border-c-secondary-cta-border;
+}
+
+.c-secondary-cta {
+    @apply bg-c-secondary-cta;
+    @apply text-c-secondary-cta-text;
+    @apply border-c-secondary-cta-border;
+    @apply text-sm;
+    @apply font-bold;
+    text-transform: capitalize;
+    width: 100%;
+    padding: 1rem;
+    justify-content: center;
+    height: 55px; /* Set this on form elements too so they're aligned whenever together */
+    border-width: 1px;
+    border-radius: 4px;
+}
+
+
+.page.messages {
+    display: none;
+}
+
+/* ===================================================
+** Global
+=================================================== */
+
+html {
+	font-size: 16px;
+}
+
+.container, .columns {
+    max-width: 100% !important;
+}
+
+.page-main {
+    margin: 0;
+}
+
+#cart-drawer-wrapper {
+    width: 30%;
+    @apply border-l;
+}
+
+.page-header,
+.page-main,
+.page-footer,
+.mobilemenuwrapper,
+.top-container {
+    width: 70%;
+}
+
+.main-logo img {
+    max-height: 50px;
+    margin-top: 0.5rem;
+}
+
+/* ===================================================
+** MiniCart
+=================================================== */
+
+.cart-totals-wrapper {
+    background: #000;
+    border-radius: 10px 10px 0 0;
+    color: #fff;
+}
+
+#cart-totals-wrapper-spacer {
+    background: #fff;
+    display: block;
+    width: 100%;
+    height: 30px;
+}
+
+.main-checkout-button {
+    font-size: 1.2rem !important;
+}
+
+.btn-remove {
+    @apply bg-c-sale;
+}
+
+
+#zero-1-hyva-pos-auto-add input {
+    @apply border-c-secondary-cta-border;
+}
+
+/* ===================================================
+** Catalog
+=================================================== */
+
+/* Hide filters as they're not gonna prove much use at the minute */
+.catalog-category-view .columns .column.main .block.border.border-container.bg-container-darker.p-4.md\:border-0.md\:bg-transparent.md\:py-0.md\:px-0.my-6,
+.catalogsearch-result-index .columns .column.main .block.border.border-container.bg-container-darker.p-4.md\:border-0.md\:bg-transparent.md\:py-0.md\:px-0.my-6,
+.main-pos-nav {
+    display: none;
+}
+
+.cms-index-index #zero-1-hyva-pos-auto-add {
+    margin-top: 4rem;
+    margin-bottom: 4rem;
+}
+
+.catalog-product-view {
+    #gallery {
+        padding-right: 2rem;
+        margin-top: -1rem;
+    }
+    #add-to-compare {
+        display: none;
+    }
+    .grid.lg\:grid-cols-2.gap-8 .container {
+        padding-left: 0;
+
+        h2 {
+            text-align: left;
+        }
+    }
+}
+
+/* ===================================================
+** Basket Page - Changes for upsells
+=================================================== */
+
+#backtobasket {
+    position: absolute;
+    top: 2rem;
+    left: 2rem;
+    font-size: 12px;
+}
+
+.checkout-cart-index {
+    #maincontent,
+    .page-footer,
+    .page-header,
+    .order-1.w-auto {
+        width: 100%;
+    }
+    #cart-drawer,
+    .openpos-header,
+    .navigation {
+        display: none;
+    }
+    .columns {
+        max-width: 1024px !important;
+    }
+    #cart-totals > div {
+        max-width: 270px;
+        margin: 0 auto;
+    }
+    #cart-totals > div div {
+        display: flex;
+        width: 100%;
+        justify-content: center;
+        font-size: 1.1rem;
+        border: none;
+        padding: 0;
+    }
+    .cart-summary-wrapper {
+        padding: 1.5rem 0;
+    }
+    .grandtotaltext {
+        font-size: 2rem !important;
+    }
+    #checkout-link-button {
+        font-size: 1.5rem;
+        padding: 2.2rem;
+    }
+    #backtobasket {
+        display: block !important;
+    }
+}
+
+/* ===================================================
+** Checkout Page
+=================================================== */
+
+.hyva_checkout-index-index {
+    #maincontent,
+    .page-footer,
+    .page-header,
+    .order-1.w-auto {
+        width: 100%;
+    }
+    .columns {
+        max-width: 1024px !important;
+    }
+    .column.column-main {
+        width: 100%;
+    }
+    #payment .section-title,
+    .openpos-header,
+    #breadcrumbs,
+    #billing-details,
+    .column-right {
+        display: none;
+    }
+    .btn {
+        @apply c-secondary-cta;
+        @apply p-8;
+        @apply mt-6;
+    }
+    #payment-method-list li.active .payment-method-container {
+        border: 1px solid #cfcfcf;
+        background: #efefef;
+        padding: 2rem;
+        border-radius: 0px 0px 4px 4px;
+        margin: -8px 0 0 0;
+    }
+    #payment-method-list .active label.main-label {
+        background: #000;
+        color: #fff;
+    }
+
+    .btn-secondary:hover {
+        background: none;
+    }
+    #placeorderbutton {
+        @apply c-primary-cta;
+        @apply border-c-primary-cta-border;
+        @apply p-8;
+        @apply m-0;
+        font-size: 1.2rem;
+    }
+    .nav-main {
+        background: red;
+        padding: 0;
+        margin: 0;
+    }
+}
+
+/* ===================================================
+** Success
+=================================================== */
+
+.checkout-onepage-success {
+    #maincontent,
+    .page-footer,
+    .page-header,
+    .order-1.w-auto {
+        width: 100%;
+    }
+    .openpos-header,
+    #breadcrumbs,
+    #cart-drawer,
+    #maincontent .container.flex,
+    #header .navigation,
+    .column.main .checkout-success {
+        display: none;
+    }
+    .columns {
+        max-width: 1024px !important;
+    }
+    .column.column-main {
+        width: 100%;
+    }
+}
+
+/* ===================================================
+** Login
+=================================================== */
+
+.openpos-tillsession-login {
+    .openpos-login-logo {
+        max-width: 170px;
+        margin-bottom: 2rem;
+    }
+    .openpos-login-wrapper {
+        max-width: 580px;
+        margin-top: 4rem;
+    }
+    .page-title {
+        display: none;
+    }
+    .secondary-login {
+        background: #fff;
+        color: #000;
+        border: 2px solid #000;
+    }
+    .secondary-login:hover {
+        background: #fff;
+        color: #000;
+    }
+    #maincontent,
+    .page-footer,
+    .page-header,
+    .column.column-main {
+        width: 100%;
+    }
 }

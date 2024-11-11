@@ -23,12 +23,13 @@ $next = $viewModel->getConfig()->getStepAfter();
 ?>
 <?php if ($next === null): ?>
     <button type="button"
-            class="btn btn-primary w-full
-                   disabled:opacity-10
-                   disabled:cursor-not-allowed"
-            x-spread="buttonPlaceOrder()"
-            x-bind="buttonPlaceOrder()"
+        id="placeorderbutton"
+        class="btn btn-primary c-primary-cta w-full
+                disabled:opacity-10
+                disabled:cursor-not-allowed"
+        x-spread="buttonPlaceOrder()"
+        x-bind="buttonPlaceOrder()"
     >
-        <?= $escaper->escapeHtml(__('Place Order')) ?>
+        <?= $escaper->escapeHtml(__('Complete Order')) ?>
     </button>
 <?php endif ?>

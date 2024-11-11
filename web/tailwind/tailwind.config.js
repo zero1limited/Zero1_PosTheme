@@ -18,13 +18,12 @@ module.exports = hyvaModules.mergeTailwindConfig({
         // => @media (min-width: 1024px) { ... }
         'xl': '1280px',
         // => @media (min-width: 1280px) { ... }
-        '2xl': '1536px' // => @media (min-width: 1536px) { ... }
-
+        '2xl': '1550px',
+        // => @media (min-width: 1700px) { ... }
       },
       fontFamily: {
         sans: ["Segoe UI", "Helvetica Neue", "Arial", "sans-serif"]
       },
-      // Override default font-sizes
       fontSize: {
         // xs: '0.6rem',
         // sm: '0.8rem',
@@ -56,15 +55,39 @@ module.exports = hyvaModules.mergeTailwindConfig({
         green: colors.emerald,
         yellow: colors.amber,
         purple: colors.violet,
-        'c-primary-cta':'#818c30', 
-        'c-primary-hover-state': '#818c30', 
-        'c-action': '#cfcfcf',
-        'bg-c-action': '#cfcfcf',
-        'c-action-hover-state': '#cfcfcf',
-        'c-highlight': '#f2f2f2',
-        'c-sale': '#d93636',
-        'c-black': '#242426',
-        'pos-blue': '#034c8c'
+
+        // Client's PRIMARY CTA Buttons
+        'c-primary-cta':'#3070f6', // background
+        'c-primary-cta-border':'#3070f6',
+        'c-primary-cta-text':'#ffffff',
+
+        // Client's PRIMARY CTA Buttons Hover State
+        'c-primary-cta-hover':'#3070f6', // background
+        'c-primary-cta-border-hover':'#3070f6',
+        'c-primary-cta-text-hover':'#ffffff',
+
+        // Client's SECONDARY CTA Buttons
+        'c-secondary-cta':'#fff', // background
+        'c-secondary-cta-border':'black',
+        'c-secondary-cta-text':'black',
+
+        // Client's SECONDARY CTA Buttons Hover State
+        'c-secondary-cta-hover':'#fff', // background
+        'c-secondary-cta-border-hover':'black',
+        'c-secondary-cta-text-hover':'white',
+
+        // Client's 3rd CTA colour (for .btn without primary or secondary declared)
+        'c-action': '#f5f5f5',
+        'c-action-hover-state': '#e6e6e6',
+        
+        // Client's Highlight colour
+        'c-highlight': '#eeeeee',
+
+        // Client's PDP ATB Highlight colour (ideally lighter than the above)
+        'c-pdp-atb-highlight': '#f9f9f9',
+
+        // Client's Sale colour
+        'c-sale': '#da3637',
       },
       textColor: {
         orange: colors.orange,
@@ -82,25 +105,21 @@ module.exports = hyvaModules.mergeTailwindConfig({
           darker: colors.gray['800']
         }
       },
-      // Client's SECONDARY CTA Colour
-      // Most buttons in the default Hyvä theme are "primary". For example, sign in buttons, register buttons etc
-      // With this in mind, we will set BOTH primary && secondary button colours as the client's secondary CTA colour
-      // The reason for this is so that ONLY the CTA's relating to checkout such as Add to Basket / Checkout etc (the actual primary CTA's), are given the primary colour. Done in zero1-master-styles
       backgroundColor: {
         primary: {
-          lighter: '#435159',
-          "DEFAULT": '#435159',
-          darker: '#435159'
+          lighter: '#666',
+          "DEFAULT": '#666',
+          darker: '#666'
         },
         secondary: {
-          lighter: '#435159',
-          "DEFAULT": '#435159',
-          darker: '#435159'
+          lighter: '#666',
+          "DEFAULT": '#666',
+          darker: '#666'
         },
         container: {
           lighter: '#ffffff',
-          "DEFAULT": '#f2f2f2',
-          darker: '#f5f5f5'
+          "DEFAULT": '#fafafa',
+          darker: '#eeeeee'
         }
       },
       borderColor: {
@@ -115,9 +134,9 @@ module.exports = hyvaModules.mergeTailwindConfig({
           darker: '#D1D5DB'
         },
         container: {
-          lighter: '#D1D5DB',
-          "DEFAULT": '#D1D5DB',
-          darker: '#D1D5DB'
+          lighter: '#eeeeee',
+          "DEFAULT": '#eeeeee',
+          darker: '#eeeeee'
         }
       },
       minWidth: {
@@ -151,14 +170,14 @@ module.exports = hyvaModules.mergeTailwindConfig({
   plugins: [require('@tailwindcss/forms'), require('@tailwindcss/typography')],
   // Examples for excluding patterns from purge
   content: [
-    '../../../../../../../vendor/hyva-themes/magento2-default-theme/**/*.phtml',
-    '../../../../../../../vendor/hyva-themes/magento2-default-theme/**/*.xml',
     // this theme's phtml and layout XML files
     '../../**/*.phtml',
     '../../*/layout/*.xml',
-    // parent theme in Vendor (if this is a child-theme)
-    //'../../../../../../../vendor/hyva-themes/magento2-default-theme/**/*.phtml',
+    // Parent theme in Vendor (if this is a child-theme)
+    '../../../../../../../vendor/hyva-themes/magento2-default-theme/**/*.phtml',
+    // Hyvä default theme
+    '../../../../hyva-themes/magento2-default-theme/**/*.phtml',
     // app/code phtml files (if need tailwind classes from app/code modules)
-    //'../../../../../../../app/code/**/*.phtml',
+    '../../../../../../../app/code/**/*.phtml',
   ]
 });

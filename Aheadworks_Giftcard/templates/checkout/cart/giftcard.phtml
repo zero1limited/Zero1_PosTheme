@@ -3,44 +3,23 @@
 
 /** @var $block Aheadworks\Giftcard\Block\Checkout\Cart\Giftcard */
 ?>
-<div class="mx-auto md:mx-0 my-2" x-data="awGiftCardManagement()">
-    <?= /** @noEscape */ $block->getChildHtml('aw_giftcard_loading') ?>
-    <div class="mb-4 cursor-pointer text-primary-lighter select-none whitespace-nowrap" @click="toggleShowCoupon()">
-        <span class="underline" role="heading" aria-level="2">
-            <?php echo $block->escapeHtml(__('Gift Card Options')) ?>
-        </span>
-        <svg xmlns="http://www.w3.org/2000/svg" fill="none" class="w-4 h-4 inline-block ml-2"
-             viewBox="0 0 24 24" stroke="currentColor">
-            <path x-show="showCouponForm" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                  d="M19 9l-7 7-7-7"/>
-            <path
-                x-show="!showCouponForm" x-cloak stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                d="M5 15l7-7 7 7"/>
-        </svg>
-    </div>
-    <div x-show="!showCouponForm">
+<div class="w-full" x-data="awGiftCardManagement()">
+    <div>
         <?php echo $block->getChildHtml('giftcard_codes') ?>
         <div id="aw_giftcard__code_info"></div>
         <form id="discount-aw-giftcard-form"
               method="post"
-              class="my-4 card">
+              class="">
             <?php echo $block->getBlockHtml('formkey')?>
             <div class="fieldset aw-giftcard">
-                <div class="field">
-                    <label for="code" class="label">
-                        <span><?php echo $block->escapeHtml(__('Enter Gift Card code')) ?></span>
-                    </label>
-                    <div class="control">
+                <div class="">
+                    <div class="flex">
                         <input type="text"
-                               class="form-input disabled:opacity-75 disabled:bg-gray-100 disabled:pointer-events-none"
+                               class="w-full form-input disabled:opacity-75 disabled:bg-gray-100 disabled:pointer-events-none"
                                name="code"
                                placeholder="<?php echo $block->escapeHtml(__('Enter Gift Card code')) ?>"
                                required="required" />
-                    </div>
-                </div>
-                <div class="actions-toolbar flex-wrap !flex-row">
-                    <div class="primary m-1">
-                        <button class="primary"
+                        <button class="primary btn btn-primary btn-secondary"
                                 type="submit"
                                 @click="onSubmitForm($event)"
                                 value="<?php echo $block->escapeHtml(__('Apply Gift Card code')) ?>"
@@ -49,8 +28,8 @@
                             <?php echo $block->escapeHtml(__('Apply Gift Card code')) ?>
                         </button>
                     </div>
-                    <div class="secondary m-1">
-                        <button class="btn"
+                    <div class="flex">
+                        <button class="btn btn-primary btn-secondary w-full mt-2"
                                 type="submit"
                                 value="<?php echo $block->escapeHtml(__('Check Status and Balance')) ?>"
                                 data-role="aw-giftcard-check-code-action"

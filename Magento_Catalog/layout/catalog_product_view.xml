@@ -6,15 +6,13 @@
  * This product is licensed per Magento install
  * See https://hyva.io/license
  */
--->
-<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" layout="1column"
+ -->
+<page layout="1column" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
       xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
     <body>
-        <referenceContainer name="sidebar.additional" remove="true" />
         <referenceBlock name="page.main.title" remove="true" />
-        <referenceBlock name="crosssell" remove="true" />
-        <referenceBlock name="checkout.cart.shipping" remove="true" />
-
-        <referenceContainer name="cart.discount" htmlClass="cart-discount flex gap-6" />
+        <referenceBlock name="review_list" remove="true" />
+        <referenceBlock name="product.review.form" remove="true" />
+        <referenceBlock name="related" remove="true" />
     </body>
 </page>
