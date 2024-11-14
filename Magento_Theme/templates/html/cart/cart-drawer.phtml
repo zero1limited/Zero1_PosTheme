@@ -181,15 +181,8 @@ $heroiconsSolid = $viewModels->require(HeroiconsSolid::class);
                     </p>
                 </header>
 
-                <?php // Callum's switcher work to go here ?>
                 <div id="cart-customer-login" class="p-4 border-b">
-                    <div class="customer customer flex items-center w-full">
-                        <span class="mr-2">
-                            <?= $heroiconsSolid->userHtml('', 30, 30, ['aria-hidden' => 'true']); ?>
-                        </span>
-                        <span class="text-lg font-bold"><?php echo __('Guest or name'); ?></span>
-                        <span class="ml-auto underline"><?php echo __('Login'); ?></span>
-                    </div>
+                    <?= $block->getChildHtml('openpos.customermanagement'); ?>
                 </div>
 
                 <?= $block->getChildHtml('cart-drawer.items.before'); ?>
