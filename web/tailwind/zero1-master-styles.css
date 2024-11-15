@@ -316,9 +316,12 @@ Copy price files from tailwind/components and manipulate as needed */
     border-radius: 4px;
 }
 
-
 .page.messages {
-    display: none;
+    position: fixed;
+    width: 70%;
+    button {
+        color: #fff;
+    }
 }
 
 /* ===================================================
@@ -346,13 +349,22 @@ html {
 .page-main,
 .page-footer,
 .mobilemenuwrapper,
-.top-container {
+.top-container,
+.openpos-popup {
     width: 70%;
 }
 
 .main-logo img {
     max-height: 50px;
     margin-top: 0.5rem;
+}
+
+.openpos-logo {
+    background: url('../images/openposlogo.svg') 0 0 no-repeat;
+    width: 104px;
+    display: inline-block;
+    height: 15px;
+    margin: 0 0 0 0.5rem;
 }
 
 /* ===================================================
@@ -430,6 +442,14 @@ html {
 }
 
 .checkout-cart-index {
+    #header {
+        padding-bottom: 1rem;
+        margin-bottom: 1rem;
+    }
+    .page-footer .openpos-settings,
+    .page-footer .navigation {
+        display: none;
+    }
     #maincontent,
     .page-footer,
     .page-header,
@@ -476,6 +496,10 @@ html {
 =================================================== */
 
 .hyva_checkout-index-index {
+    .page-footer .openpos-settings,
+    .page-footer .navigation {
+        display: none;
+    }
     #maincontent,
     .page-footer,
     .page-header,
@@ -554,6 +578,9 @@ html {
     .column.column-main {
         width: 100%;
     }
+    .page-footer {
+        display: none;
+    }
 }
 
 /* ===================================================
@@ -586,5 +613,43 @@ html {
     .page-header,
     .column.column-main {
         width: 100%;
+    }
+}
+
+/* ===================================================
+** Footer
+=================================================== */
+
+#maincontent {
+    padding-bottom: 3.5rem;
+}
+.page-footer {
+    position: fixed;
+    bottom: 0;
+    @apply border-t;
+    @apply bg-c-highlight;
+    /* background: #f9f9f9; */
+
+    .footer.content {
+        @apply flex;
+        @apply items-center;
+        /* @apply p-4; */
+        /* @apply gap-6; */
+    }
+
+    .openpos-settings {
+        padding: 13px;
+        background: #f9f9f9;
+        @apply border-r;
+    }
+
+    .navigation {
+        @apply order-2;
+        padding: 15px;
+        background: #f9f9f9;
+    }
+
+    #openpos-customermanagement {
+        @apply order-last;
     }
 }

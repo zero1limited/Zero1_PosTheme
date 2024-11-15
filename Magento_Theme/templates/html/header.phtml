@@ -51,15 +51,12 @@ $showMiniCart = '1';
     }
 </script>
 <div id="header"
-     class="relative z-30 w-full"
+     class="relative w-full"
      x-data="initHeader()"
      @private-content-loaded.window="getData(event.detail.data)"
 >
     <a href="/" id="backtobasket" style="display: none;"><?php echo __('< Basket'); ?></a>
     <div class="container flex flex-wrap lg:flex-nowrap items-center justify-between w-full px-6 py-3 mx-auto mt-0">
-
-        <!--Main Navigation-->
-        <?= $block->getChildHtml('topmenu') ?>
         
         <!--Logo-->
         <?= $block->getChildHtml('logo'); ?>

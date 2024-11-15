@@ -181,10 +181,6 @@ $heroiconsSolid = $viewModels->require(HeroiconsSolid::class);
                     </p>
                 </header>
 
-                <div id="cart-customer-login" class="p-4 border-b">
-                    <?= $block->getChildHtml('openpos.customermanagement'); ?>
-                </div>
-
                 <?= $block->getChildHtml('cart-drawer.items.before'); ?>
 
                 <template x-if="!itemsCount">

@@ -7,6 +7,7 @@
  */
 
 use Hyva\Theme\Model\ViewModelRegistry;
+use Hyva\Theme\ViewModel\HeroiconsSolid;
 use Hyva\Theme\ViewModel\HeroiconsOutline;
 use Hyva\Theme\ViewModel\Navigation;
 use Magento\Framework\View\Element\Template;
@@ -16,8 +17,11 @@ use Magento\Framework\Escaper;
 /** @var Escaper $escaper */
 /** @var ViewModelRegistry $viewModels */
 
+/** @var HeroiconsSolid $heroicons */
+$heroicons = $viewModels->require(HeroiconsSolid::class);
+
 /** @var HeroiconsOutline $heroicons */
-$heroicons = $viewModels->require(HeroiconsOutline::class);
+$heroiconsOutline = $viewModels->require(HeroiconsOutline::class);
 
 /** @var Navigation $viewModelNavigation */
 $viewModelNavigation = $viewModels->require(Navigation::class);
@@ -30,22 +34,23 @@ $block->setData('cache_tags', $viewModelNavigation->getIdentities());
 
 ?>
 <div x-data="initMenuMobile<?= $escaper->escapeHtml($uniqueId) ?>()"
-     class="z-20 order-1 navigation mt-2"
+     class="z-20 navigation"
 >
     <!-- mobile -->
     <div @load.window="setActiveMenu($root)"
-         class="bg-container-lighter"
-         :class="{'h-screen overflow-x-hidden overflow-y-auto fixed top-0 left-0 w-full mobilemenuwrapper' : open}"
+         class=""
+         :class="{'h-screen bg-container-lighter overflow-x-hidden overflow-y-auto fixed top-0 left-0 w-full mobilemenuwrapper' : open}"
          @toggle-mobile-menu.window="open = !open"
          @keydown.window.escape="open=false"
     >
         <div class="flex items-baseline justify-between menu-icon">
             <div class="flex justify-end w-full">
                 <a @click="$dispatch('toggle-mobile-menu')"
-                       class="flex items-center justify-center cursor-pointer"
+                       class="flex items-center justify-center cursor-pointer flex-col"
                        :class="{ 'ml-auto': open }">
-                    <?= $heroicons->xHtml('hidden bg-white text-black p-4', 64, 64, [":class" => "{ 'hidden' : !open, 'block': open }"]); ?>
-                    <?= $heroicons->menuHtml('p-1', 48, 48, [":class" => "{ 'hidden' : open, 'block': !open }"]); ?>
+                    <?= $heroiconsOutline->xHtml('hidden bg-white text-black p-4 stroke-1', 64, 64, [":class" => "{ 'hidden' : !open, 'block': open }"]); ?>
+                    <?= $heroicons->tagHtml('p-1', 30, 30, [":class" => "{ 'hidden' : open, 'block': !open }"]); ?>
+                    <span class="inline-block text-sm" :class="{ 'hidden': open, 'block': !open }"><?php echo __('Products'); ?></span>
                 </a>
             </div>
         </div>

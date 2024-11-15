@@ -10,12 +10,46 @@ declare(strict_types=1);
 
 use Magento\Framework\View\Element\Template;
 use Magento\Framework\Escaper;
+use Hyva\Theme\Model\ViewModelRegistry;
+use Hyva\Theme\ViewModel\HeroiconsOutline;
+use Hyva\Theme\ViewModel\HeroiconsSolid;
 
 /** @var Template $block */
 /** @var Escaper $escaper */
+/** @var ViewModelRegistry $viewModels */
+
+/** @var HeroiconsOutline $heroicons */
+$heroicons = $viewModels->require(HeroiconsOutline::class);
+$heroiconsSolid = $viewModels->require(HeroiconsSolid::class);
 ?>
 
-<div class="border-t p-2 flex items-center justify-center bg-white">
-    <span class="inline text-xs uppercase mr-1">Powered by </span>
-    <img src="https://www.zero1.co.uk/media/wysiwyg/openposlogo.png" width="80px" height="12px" style="height: 12px;" class="" />
+<div x-data="{ open: false }" class="openpos-settings">
+
+
+    <button @click="open = true">
+        <?= $heroiconsSolid->cogHtml('p-1 w-full', 30, 30); ?>
+        <span class="inline-block text-sm"><?php echo __('Settings'); ?></span>
+    </button>
+
+    <div
+        x-show="open"
+        x-cloak
+        @click.away="open = false"
+        @keydown.window.escape="open = false"
+        class="fixed inset-0 z-30 justify-center bg-white openpos-popup"
+    >
+        <div class="flex w-full flex-wrap">
+
+            <div class="flex justify-end w-full border-b">
+                <button @click="open = false" class="text-black bg-white p-4 stroke-1 font-normal">
+                    <?= $heroicons->xHtml('w-8 h-8 stroke-1'); ?>
+                </button>
+            </div>
+
+            <div class="w-full openpos-popup-content">
+                <a href="/openpos/tillsession/login/" class="flex items-center w-full p-8 border-b cursor-pointer bg-container-lighter border-container level-0 font-bold"><?php echo __('Logout of '); ?><span class="openpos-logo"></span></a>
+            </div>
+
+        </div>
+    </div>
 </div>
