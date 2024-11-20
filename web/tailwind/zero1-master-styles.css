@@ -90,14 +90,12 @@ This can look slightly strange if these have no border radius so we've removed t
     border-radius: 4px;
     /* width: 100%; */
     box-shadow: none;
-
     height: 55px;
 }
 
 .form-select {
     border-radius: 4px;
     box-shadow: none;
-
     height: 55px;
 }
 
@@ -107,6 +105,15 @@ This can look slightly strange if these have no border radius so we've removed t
     border-color: #D1D5DB;
     --tw-ring-offset-shadow: none;
     box-shadow: none;
+}
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+input[type=number] {
+  -moz-appearance: textfield;
 }
 
 /* Selects focus - remove ugly blue border / shadow? */
