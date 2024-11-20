@@ -116,6 +116,18 @@ input[type=number] {
   -moz-appearance: textfield;
 }
 
+.btn:focus {
+    border-width: 1px;
+    border-color: #000 !important;
+    box-shadow: none;
+}
+
+.btn:focus {
+    border-width: 1px;
+    border-color: #000 !important;
+    box-shadow: none;
+}
+
 /* Selects focus - remove ugly blue border / shadow? */
 
 .form-input:focus, .form-email:focus, .form-select:focus, .form-multiselect:focus, .form-textarea:focus {
@@ -375,6 +387,17 @@ html {
 }
 
 /* ===================================================
+** Switcher
+=================================================== */
+
+#openpos-switcher {
+    min-width: 180px;
+    button {
+        @apply bg-c-highlight;
+    }
+}
+
+/* ===================================================
 ** MiniCart
 =================================================== */
 
@@ -416,7 +439,7 @@ html {
 }
 
 .cms-index-index #zero-1-hyva-pos-auto-add {
-    margin-top: 4rem;
+    /* margin-top: 4rem; */
     margin-bottom: 4rem;
 }
 

@@ -10,7 +10,7 @@
 <page layout="3columns" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
     <body>
         <referenceContainer name="header.container">
-            <container name="openposheader" as="openposheader" htmlTag="div" htmlClass="openpos-header border-b" after="header-content">
+            <container name="openposheader" as="openposheader" htmlTag="div" htmlClass="openpos-header border-b flex mt-6 mb-2" after="header-content">
             </container>
         </referenceContainer>
 
