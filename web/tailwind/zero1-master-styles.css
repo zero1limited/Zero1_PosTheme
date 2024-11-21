@@ -683,3 +683,102 @@ html {
         @apply order-last;
     }
 }
+
+/* ===================================================
+** Mobile Only
+=================================================== */
+
+@media screen and (max-width: 767px) {
+    .page-header, .page-main, .page-footer, .mobilemenuwrapper, .top-container, .openpos-popup {
+        width: 100%;
+    }
+    #cart-drawer-wrapper {
+        width: 100%;
+        top: inherit;
+        max-height: 44vh;
+        border-width: 1px 0 0 0;
+        box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+        bottom: 80px;
+        z-index: 0;
+
+        .relative.border-l {
+            border: none;
+        }
+        #cart-totals-wrapper-spacer {
+            display: none;
+        }
+    }
+
+    #maincontent {
+        padding-bottom: 25rem;
+    }
+
+    .cms-index-index #zero-1-hyva-pos-auto-add {
+        margin-bottom: 0;
+    }
+
+    .page-footer {
+        .openpos-settings button span,
+        .navigation a span {
+            font-size: 10px !important;
+        }
+        #openpos-customermanagement {
+            padding: 0 1rem;
+            span {
+                font-size: 10px !important;
+            }
+        }   
+        #openpos-customermanagement .openpos-popup-content span {
+            font-size: inherit !important;
+        }
+    }
+
+    #cart-drawer {
+        position: relative;
+        z-index: 99999;
+    }
+    .page-footer {
+        position: fixed;
+        z-index: 999999;
+    }
+
+    .openpos-header {
+        @apply flex-wrap;
+
+        #openpos-switcher {
+            width: 100%;
+            padding-left: 1.5rem;
+            margin-bottom: 1.5rem;
+        }
+
+        #openpos-switcher:before {
+            content: "-or-";
+            width: 100%;
+            display: inline-block;
+            text-align: center;
+            font-size: 12px;
+            margin-bottom: 1rem;
+        }
+    }
+
+    .checkout-cart-index {
+        #maincontent {
+            padding-bottom: 1rem;
+        }
+        .btn-secondary {
+            font-size: 0.9rem;
+            justify-content: center;
+        }
+        .vouchers-wrapper .cart-discount {
+            flex-wrap: wrap;
+        }
+    }
+
+    .hyva_checkout-index-index {
+        #openpos-customermanagement .btn-secondary {
+            width: auto;
+            margin: 0 0 0 auto;
+        }
+    }
+    
+}
