@@ -212,7 +212,7 @@ $heroiconsSolid = $viewModels->require(HeroiconsSolid::class);
                                                 class="w-full"
                                             />
                                         </div>
-                                        <div x-data="{ showOptions: false }" class="details w-3/4 p-2">
+                                        <div x-data="{ showOptions: false }" class="details w-2/4 p-2">
                                             <span x-html="item.qty"></span> x <span x-html="item.product_name"></span>
                                             <p><span x-html="item.product_price"></span></p>
                                             
@@ -227,25 +227,14 @@ $heroiconsSolid = $viewModels->require(HeroiconsSolid::class);
                                                 </template>
                                             </div>
                                         </div>
-                                    </div>
-                                    <div class="w-full flex">
-                                        <div class="actions w-full">
-                                            <div class="p-4 flex pt-0">
-                                                <a :href="item.configure_url"
-                                                x-show="item.product_type !== 'grouped' && item.is_visible_in_site_visibility"
-                                                class="inline-flex p-2 mr-2 btn btn-primary btn-secondary"
-                                                :aria-label="hyva.strf('<?= $escaper->escapeJs(__('Edit product "%0"')) ?>', item.product_name)"
-                                                >
-                                                    <?= $heroicons->pencilHtml('', 20, 20, ['aria-hidden' => 'true']); ?>
-                                                </a>
-                                                <button type="button"
-                                                        class="inline-flex p-2 btn btn-primary btn-remove"
-                                                        @click="deleteItemFromCart(item.item_id)"
-                                                        :aria-label="hyva.strf('<?= $escaper->escapeJs(__('Remove product "%0" from cart')) ?>', item.product_name)"
-                                                >
-                                                    <?= $heroicons->trashHtml('', 20, 20, ['aria-hidden' => 'true']); ?>
-                                                </button>
-                                            </div>
+                                        <div class="w-1/4 flex items-center py-0 px-2">
+                                            <button type="button"
+                                                    class="inline-flex p-2 btn btn-primary btn-remove"
+                                                    @click="deleteItemFromCart(item.item_id)"
+                                                    :aria-label="hyva.strf('<?= $escaper->escapeJs(__('Remove product "%0" from cart')) ?>', item.product_name)"
+                                            >
+                                                <?= $heroicons->trashHtml('', 20, 20, ['aria-hidden' => 'true']); ?>
+                                            </button>
                                         </div>
                                     </div>
                                 </div>
