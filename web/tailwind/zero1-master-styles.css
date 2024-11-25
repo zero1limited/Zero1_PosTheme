@@ -418,8 +418,12 @@ html {
     font-size: 1.2rem !important;
 }
 
-.btn-remove {
-    @apply bg-c-sale;
+.btn-remove,
+.btn-remove:hover {
+    @apply border-c-sale;
+    @apply text-c-sale;
+    @apply border;
+    background: #fff;
 }
 
 
@@ -580,6 +584,11 @@ html {
         background: red;
         padding: 0;
         margin: 0;
+    }
+
+    #openpos-customermanagement .btn-secondary {
+        width: auto;
+        margin: 0 0 0 auto;
     }
 }
 
