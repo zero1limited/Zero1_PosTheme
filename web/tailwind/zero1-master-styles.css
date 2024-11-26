@@ -197,7 +197,7 @@ Let's remove it and keep it the same as the card.. */
     &.info,
     &.warning,
     &.notice {
-        @apply bg-yellow-500;
+        background: #333;
     }
 
     a {
@@ -690,6 +690,98 @@ html {
 
     #openpos-customermanagement {
         @apply order-last;
+    }
+}
+
+/* ===================================================
+** Customer Account
+=================================================== */
+
+.customer-account-index #maincontent,
+.customer-account-edit #maincontent,
+.customer-address-index #maincontent,
+.account.sales-order-history #maincontent,
+.review-customer-index #maincontent,
+.newsletter-manage-index #maincontent,
+.account.awgiftcard-card-index #maincontent,
+.account.stripe_payments-customer-subscriptions #maincontent,
+.account.aw_store_credit-info-index #maincontent,
+.account.customer-address-form #maincontent,
+.account.sales-order-view #maincontent,
+.account.sales-order-invoice #maincontent {
+    background: #fff;
+    position: fixed;
+    top: 0;
+    height: 92vh;
+    overflow: scroll;
+    padding-top: 83px;
+
+    .sidebar.sidebar-main .account-nav {
+        padding: 0;
+        border: none;
+
+        .account-nav-title,
+        .delimiter {
+            display: none;
+        }
+
+        .account-nav-content ul {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+
+            li {
+                @apply border;
+                @apply py-2;
+                @apply px-4;
+                border-radius: 4px;
+            }
+
+            li.current {
+                @apply bg-c-highlight;
+
+                strong {
+                    text-decoration: none;
+                }
+            }
+        }
+    }
+
+    #main-account-navigation {
+        position: fixed;
+        top: 0;
+        background: #fff;
+        right: 30vw;
+        left: 0;
+        padding: 16px 17px 16px 30px;
+        @apply border-b;
+    }
+
+    .sidebar.sidebar-main,
+    .column.main {
+        grid-column: span 4 / span 4 !important;
+    }
+
+    .flex.flex-wrap.justify-between {
+        .w-full.p-4.lg\:w-1\/2:nth-of-type(1) {
+            padding-left: 0;
+        }
+        .w-full.p-4.lg\:w-1\/2:nth-of-type(2) {
+            padding-right: 0;
+        }
+    }
+    .bg-container-darker {
+        display: none;
+    }
+    .legend {
+        font-weight: bold;
+    }
+
+    .form-input, .form-email, .form-multiselect, .form-textarea, .form-select {
+        width: 100%;
+    }
+    .order-items .hidden {
+        display: none;
     }
 }
 

@@ -1,0 +1,15 @@
+<?php
+use Hyva\Theme\Model\ViewModelRegistry;
+use Hyva\Theme\ViewModel\HeroiconsOutline;
+
+/** @var ViewModelRegistry $viewModels */
+/** @var HeroiconsOutline $heroicons */
+$heroicons = $viewModels->require(HeroiconsOutline::class);
+?>
+
+<div id="main-account-navigation">
+    <div class="flex items-center">
+        <span class="inline-block w-full font-bold text-lg"><?php echo __('Customer Account'); ?></span>
+        <a href="/"><?= $heroicons->xHtml('inline-block'); ?></a>
+    </div>
+</div>
