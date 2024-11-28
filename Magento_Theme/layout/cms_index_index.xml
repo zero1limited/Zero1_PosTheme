@@ -16,5 +16,12 @@
         	<referenceBlock name="slider-1" remove="true" />
             <referenceBlock name="slider-2" remove="true" />
         </referenceContainer>
+
+        <referenceContainer name="top.container">
+            <block class="Magento\Framework\View\Element\Template" name="openpos.homepage.content" template="Magento_Theme::cms/homepage.phtml"/>
+        </referenceContainer>
+
+        <referenceContainer name="content" remove="true" />
+
     </body>
 </page>

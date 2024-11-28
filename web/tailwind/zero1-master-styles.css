@@ -28,7 +28,15 @@ html {
 ** Remove border-radius
 ====================================== */
 
-.rounded,.rounded-lg,.rounded-md,.rounded-none,.rounded-sm{border-radius:0}.rounded-t,.rounded-t-full,.rounded-t-lg,.rounded-t-md,.rounded-t-none,.rounded-t-sm{border-top-left-radius:0;border-top-right-radius:0}.rounded-r,.rounded-r-full,.rounded-r-lg,.rounded-r-md,.rounded-r-none,.rounded-r-sm{border-top-right-radius:0;border-bottom-right-radius:0}.rounded-b,.rounded-b-full,.rounded-b-lg,.rounded-b-md,.rounded-b-none,.rounded-b-sm{border-bottom-right-radius:0;border-bottom-left-radius:0}.rounded-l,.rounded-l-full,.rounded-l-lg,.rounded-l-md,.rounded-l-none,.rounded-l-sm{border-top-left-radius:0;border-bottom-left-radius:0}.rounded-tl,.rounded-tl-full,.rounded-tl-lg,.rounded-tl-md,.rounded-tl-none,.rounded-tl-sm{border-top-left-radius:0}.rounded-tr,.rounded-tr-full,.rounded-tr-lg,.rounded-tr-md,.rounded-tr-none,.rounded-tr-sm{border-top-right-radius:0}.rounded-br,.rounded-br-full,.rounded-br-lg,.rounded-br-md,.rounded-br-none,.rounded-br-sm{border-bottom-right-radius:0}.rounded-bl,.rounded-bl-full,.rounded-bl-lg,.rounded-bl-md,.rounded-bl-none,.rounded-bl-sm{border-bottom-left-radius:0}
+.rounded,.rounded-lg,.rounded-md,.rounded-none,.rounded-sm{border-radius:4px}
+.rounded-t,.rounded-t-full,.rounded-t-lg,.rounded-t-md,.rounded-t-none,.rounded-t-sm{border-top-left-radius:4px;border-top-right-radius:4px}
+.rounded-r,.rounded-r-full,.rounded-r-lg,.rounded-r-md,.rounded-r-none,.rounded-r-sm{border-top-right-radius:4px;border-bottom-right-radius:4px}
+.rounded-b,.rounded-b-full,.rounded-b-lg,.rounded-b-md,.rounded-b-none,.rounded-b-sm{border-bottom-right-radius:4px;border-bottom-left-radius:4px}
+.rounded-l,.rounded-l-full,.rounded-l-lg,.rounded-l-md,.rounded-l-none,.rounded-l-sm{border-top-left-radius:4px;border-bottom-left-radius:4px}
+.rounded-tl,.rounded-tl-full,.rounded-tl-lg,.rounded-tl-md,.rounded-tl-none,.rounded-tl-sm{border-top-left-radius:4px}
+.rounded-tr,.rounded-tr-full,.rounded-tr-lg,.rounded-tr-md,.rounded-tr-none,.rounded-tr-sm{border-top-right-radius:4px}
+.rounded-br,.rounded-br-full,.rounded-br-lg,.rounded-br-md,.rounded-br-none,.rounded-br-sm{border-bottom-right-radius:4px}
+.rounded-bl,.rounded-bl-full,.rounded-bl-lg,.rounded-bl-md,.rounded-bl-none,.rounded-bl-sm{border-bottom-left-radius:4px}
 
 /* Elements with the class "rounded-full" are generally icon based such as the small circle (indicator icon) before stock availability...
 This can look slightly strange if these have no border radius so we've removed that class from the list above */
@@ -40,7 +48,7 @@ This can look slightly strange if these have no border radius so we've removed t
 ====================================== */
 
 .btn {
-    border-radius: 0;
+    border-radius: 4px;
     box-shadow: none;
 }
 
@@ -54,9 +62,9 @@ This can look slightly strange if these have no border radius so we've removed t
 
 .btn-secondary,
 .btn-secondary:hover {
-    border-width: 0;
-    @apply bg-primary;
-    color: #fff;
+    border-width: 1px;
+    @apply bg-c-secondary-cta;
+    @apply border-c-secondary-cta-border;
 }
 
 /* ======================================
@@ -79,18 +87,16 @@ This can look slightly strange if these have no border radius so we've removed t
 ====================================== */
 
 .form-input, .form-email, .form-multiselect, .form-textarea {
-    border-radius: 0; 
+    border-radius: 4px;
     /* width: 100%; */
     box-shadow: none;
-
-    height: 45px;
+    height: 55px;
 }
 
 .form-select {
-    border-radius: 0; 
+    border-radius: 4px;
     box-shadow: none;
-
-    height: 45px;
+    height: 55px;
 }
 
 /* Input field focus - remove ugly blue border / shadow? */
@@ -98,6 +104,27 @@ This can look slightly strange if these have no border radius so we've removed t
 [type='text']:focus, [type='email']:focus, [type='url']:focus, [type='password']:focus, [type='number']:focus, [type='date']:focus, [type='datetime-local']:focus, [type='month']:focus, [type='search']:focus, [type='tel']:focus, [type='time']:focus, [type='week']:focus, [multiple]:focus, textarea:focus, select:focus {
     border-color: #D1D5DB;
     --tw-ring-offset-shadow: none;
+    box-shadow: none;
+}
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+input[type=number] {
+  -moz-appearance: textfield;
+}
+
+.btn:focus {
+    border-width: 1px;
+    border-color: #000 !important;
+    box-shadow: none;
+}
+
+.btn:focus {
+    border-width: 1px;
+    border-color: #000 !important;
     box-shadow: none;
 }
 
@@ -126,9 +153,10 @@ Only seems to be an issue on iPhones so will add this in for that reason
 ====================================== */
 
 .card {
-    border-radius: 0; 
+    border-radius: 4px;
     box-shadow: none;
     border: 1px solid #D1D5DB; /* Should match "borderColor / container" in tailwind.config.js */
+    overflow: hidden;
 }
 
 /* card-interactive gives a slight grey background when hovered on. 
@@ -169,7 +197,7 @@ Let's remove it and keep it the same as the card.. */
     &.info,
     &.warning,
     &.notice {
-        @apply bg-yellow-500;
+        background: #333;
     }
 
     a {
@@ -239,15 +267,14 @@ Copy price files from tailwind/components and manipulate as needed */
 
 .c-primary-cta {
     @apply bg-c-primary-cta;
+    @apply text-c-primary-cta-text;
     @apply text-sm;
     @apply font-bold;
-    text-transform: uppercase;
+    text-transform: capitalize;
     width: 100%;
     padding: 1rem;
     justify-content: center;
-
-    height: 45px; /* Set this on form elements too so they're aligned whenever together */
-
+    height: 55px; /* Set this on form elements too so they're aligned whenever together */
 }
 
 /* Declare what buttons need the primary CTA styling */
@@ -271,7 +298,7 @@ Copy price files from tailwind/components and manipulate as needed */
         width: 100%;
     }
     svg {
-        display: none;
+        /* display: none; */
     }
 }
 
@@ -284,9 +311,575 @@ Copy price files from tailwind/components and manipulate as needed */
 /* Primary CTA buttons hover state */
 
 .c-primary-cta:hover {
-    @apply bg-c-primary-hover-state;
+    @apply bg-c-primary-cta-hover;
 }
 
-#payment-method-list li.active {
-    color:red;
+.btn-secondary {
+    @apply bg-c-secondary-cta;
+    @apply text-c-secondary-cta-text;
+    @apply border-c-secondary-cta-border;
+}
+
+.c-secondary-cta {
+    @apply bg-c-secondary-cta;
+    @apply text-c-secondary-cta-text;
+    @apply border-c-secondary-cta-border;
+    @apply text-sm;
+    @apply font-bold;
+    text-transform: capitalize;
+    width: 100%;
+    padding: 1rem;
+    justify-content: center;
+    height: 55px; /* Set this on form elements too so they're aligned whenever together */
+    border-width: 1px;
+    border-radius: 4px;
+}
+
+.page.messages {
+    position: fixed;
+    width: 70%;
+    button {
+        color: #fff;
+    }
+}
+
+/* ===================================================
+** Global
+=================================================== */
+
+html {
+	font-size: 16px;
+}
+
+.container, .columns {
+    max-width: 100% !important;
+}
+
+.page-main {
+    margin: 0;
+}
+
+#cart-drawer-wrapper {
+    width: 30%;
+    @apply border-l;
+}
+
+.page-header,
+.page-main,
+.page-footer,
+.mobilemenuwrapper,
+.top-container,
+.openpos-popup {
+    width: 70%;
+}
+
+.main-logo img {
+    max-height: 50px;
+    margin-top: 0.5rem;
+}
+
+.openpos-logo {
+    background: url('../images/openposlogo.svg') 0 0 no-repeat;
+    width: 104px;
+    display: inline-block;
+    height: 15px;
+    margin: 0 0 0 0.5rem;
+}
+
+/* ===================================================
+** Switcher
+=================================================== */
+
+#openpos-switcher {
+    min-width: 180px;
+    button {
+        @apply bg-c-highlight;
+    }
+}
+
+/* ===================================================
+** MiniCart
+=================================================== */
+
+.cart-totals-wrapper {
+    background: #000;
+    border-radius: 10px 10px 0 0;
+    color: #fff;
+}
+
+#cart-totals-wrapper-spacer {
+    background: #fff;
+    display: block;
+    width: 100%;
+    height: 30px;
+}
+
+.main-checkout-button {
+    font-size: 1.2rem !important;
+}
+
+.btn-remove,
+.btn-remove:hover {
+    @apply border-c-sale;
+    @apply text-c-sale;
+    @apply border;
+    background: #fff;
+}
+
+
+#zero-1-hyva-pos-auto-add input {
+    @apply border-c-secondary-cta-border;
+}
+
+/* ===================================================
+** Catalog
+=================================================== */
+
+/* Hide filters as they're not gonna prove much use at the minute */
+.catalog-category-view .columns .column.main .block.border.border-container.bg-container-darker.p-4.md\:border-0.md\:bg-transparent.md\:py-0.md\:px-0.my-6,
+.catalogsearch-result-index .columns .column.main .block.border.border-container.bg-container-darker.p-4.md\:border-0.md\:bg-transparent.md\:py-0.md\:px-0.my-6,
+.main-pos-nav {
+    display: none;
+}
+
+.cms-index-index #zero-1-hyva-pos-auto-add {
+    /* margin-top: 4rem; */
+    margin-bottom: 4rem;
+}
+
+.catalog-product-view {
+    #gallery {
+        padding-right: 2rem;
+        margin-top: -1rem;
+    }
+    #add-to-compare {
+        display: none;
+    }
+    .grid.lg\:grid-cols-2.gap-8 .container {
+        padding-left: 0;
+
+        h2 {
+            text-align: left;
+        }
+    }
+}
+
+/* ===================================================
+** Basket Page - Changes for upsells
+=================================================== */
+
+#backtobasket {
+    position: absolute;
+    top: 2rem;
+    left: 2rem;
+    font-size: 12px;
+}
+
+.checkout-cart-index {
+    #header {
+        padding-bottom: 1rem;
+        margin-bottom: 1rem;
+    }
+    .page-footer .openpos-settings,
+    .page-footer .navigation {
+        display: none;
+    }
+    #maincontent,
+    .page-footer,
+    .page-header,
+    .order-1.w-auto {
+        width: 100%;
+    }
+    #cart-drawer,
+    .openpos-header,
+    .navigation {
+        display: none;
+    }
+    .columns {
+        max-width: 1024px !important;
+    }
+    #cart-totals > div {
+        max-width: 270px;
+        margin: 0 auto;
+    }
+    #cart-totals > div div {
+        display: flex;
+        width: 100%;
+        justify-content: center;
+        font-size: 1.1rem;
+        border: none;
+        padding: 0;
+    }
+    .cart-summary-wrapper {
+        padding: 1.5rem 0;
+    }
+    .grandtotaltext {
+        font-size: 2rem !important;
+    }
+    #checkout-link-button {
+        font-size: 1.5rem;
+        padding: 2.2rem;
+    }
+    #backtobasket {
+        display: block !important;
+    }
+}
+
+/* ===================================================
+** Checkout Page
+=================================================== */
+
+.hyva_checkout-index-index {
+    .page-footer .openpos-settings,
+    .page-footer .navigation {
+        display: none;
+    }
+    #maincontent,
+    .page-footer,
+    .page-header,
+    .order-1.w-auto {
+        width: 100%;
+    }
+    .columns {
+        max-width: 1024px !important;
+    }
+    .column.column-main {
+        width: 100%;
+    }
+    #payment .section-title,
+    .openpos-header,
+    #breadcrumbs,
+    #billing-details,
+    .column-right {
+        display: none;
+    }
+    .btn {
+        @apply c-secondary-cta;
+        @apply p-8;
+        @apply mt-6;
+    }
+    #payment-method-list li.active .payment-method-container {
+        border: 1px solid #cfcfcf;
+        background: #efefef;
+        padding: 2rem;
+        border-radius: 0px 0px 4px 4px;
+        margin: -8px 0 0 0;
+    }
+    #payment-method-list .active label.main-label {
+        background: #000;
+        color: #fff;
+    }
+
+    .btn-secondary:hover {
+        background: none;
+    }
+    #placeorderbutton {
+        @apply c-primary-cta;
+        @apply border-c-primary-cta-border;
+        @apply p-8;
+        @apply m-0;
+        font-size: 1.2rem;
+    }
+    .nav-main {
+        background: red;
+        padding: 0;
+        margin: 0;
+    }
+
+    #openpos-customermanagement .btn-secondary {
+        width: auto;
+        margin: 0 0 0 auto;
+    }
+}
+
+/* ===================================================
+** Success
+=================================================== */
+
+.checkout-onepage-success {
+    #maincontent,
+    .page-footer,
+    .page-header,
+    .order-1.w-auto {
+        width: 100%;
+    }
+    .openpos-header,
+    #breadcrumbs,
+    #cart-drawer,
+    #maincontent .container.flex,
+    #header .navigation,
+    .column.main .checkout-success {
+        display: none;
+    }
+    .columns {
+        max-width: 1024px !important;
+    }
+    .column.column-main {
+        width: 100%;
+    }
+    .page-footer {
+        display: none;
+    }
+}
+
+/* ===================================================
+** Login
+=================================================== */
+
+.openpos-tillsession-login {
+    .openpos-login-logo {
+        max-width: 200px;
+        margin-bottom: 2rem;
+    }
+    .openpos-login-wrapper {
+        max-width: 580px;
+        margin-top: 4rem;
+    }
+    .page-title {
+        display: none;
+    }
+    .secondary-login {
+        background: #fff;
+        color: #000;
+        border: 2px solid #000;
+    }
+    .secondary-login:hover {
+        background: #fff;
+        color: #000;
+    }
+    #maincontent,
+    .page-footer,
+    .page-header,
+    .column.column-main {
+        width: 100%;
+    }
+}
+
+/* ===================================================
+** Footer
+=================================================== */
+
+#maincontent {
+    padding-bottom: 3.5rem;
+}
+.page-footer {
+    position: fixed;
+    bottom: 0;
+    @apply border-t;
+    @apply bg-c-highlight;
+    /* background: #f9f9f9; */
+
+    .footer.content {
+        @apply flex;
+        @apply items-center;
+        /* @apply p-4; */
+        /* @apply gap-6; */
+    }
+
+    .openpos-settings {
+        padding: 13px;
+        background: #f9f9f9;
+        @apply border-r;
+    }
+
+    .navigation {
+        @apply order-2;
+        padding: 15px;
+        background: #f9f9f9;
+    }
+
+    #openpos-customermanagement {
+        @apply order-last;
+    }
+}
+
+/* ===================================================
+** Customer Account
+=================================================== */
+
+.customer-account-index #maincontent,
+.customer-account-edit #maincontent,
+.customer-address-index #maincontent,
+.account.sales-order-history #maincontent,
+.review-customer-index #maincontent,
+.newsletter-manage-index #maincontent,
+.account.awgiftcard-card-index #maincontent,
+.account.stripe_payments-customer-subscriptions #maincontent,
+.account.aw_store_credit-info-index #maincontent,
+.account.customer-address-form #maincontent,
+.account.sales-order-view #maincontent,
+.account.sales-order-invoice #maincontent {
+    background: #fff;
+    position: fixed;
+    top: 0;
+    height: 92vh;
+    overflow: scroll;
+    padding-top: 83px;
+
+    .sidebar.sidebar-main .account-nav {
+        padding: 0;
+        border: none;
+
+        .account-nav-title,
+        .delimiter {
+            display: none;
+        }
+
+        .account-nav-content ul {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+
+            li {
+                @apply border;
+                @apply py-2;
+                @apply px-4;
+                border-radius: 4px;
+            }
+
+            li.current {
+                @apply bg-c-highlight;
+
+                strong {
+                    text-decoration: none;
+                }
+            }
+        }
+    }
+
+    #main-account-navigation {
+        position: fixed;
+        top: 0;
+        background: #fff;
+        right: 30vw;
+        left: 0;
+        padding: 16px 17px 16px 30px;
+        @apply border-b;
+    }
+
+    .sidebar.sidebar-main,
+    .column.main {
+        grid-column: span 4 / span 4 !important;
+    }
+
+    .flex.flex-wrap.justify-between {
+        .w-full.p-4.lg\:w-1\/2:nth-of-type(1) {
+            padding-left: 0;
+        }
+        .w-full.p-4.lg\:w-1\/2:nth-of-type(2) {
+            padding-right: 0;
+        }
+    }
+    .bg-container-darker {
+        display: none;
+    }
+    .legend {
+        font-weight: bold;
+    }
+
+    .form-input, .form-email, .form-multiselect, .form-textarea, .form-select {
+        width: 100%;
+    }
+    .order-items .hidden {
+        display: none;
+    }
+}
+
+/* ===================================================
+** Mobile Only
+=================================================== */
+
+@media screen and (max-width: 767px) {
+    .page-header, .page-main, .page-footer, .mobilemenuwrapper, .top-container, .openpos-popup {
+        width: 100%;
+    }
+    #cart-drawer-wrapper {
+        width: 100%;
+        top: inherit;
+        max-height: 44vh;
+        border-width: 1px 0 0 0;
+        box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+        bottom: 80px;
+        z-index: 0;
+
+        .relative.border-l {
+            border: none;
+        }
+        #cart-totals-wrapper-spacer {
+            display: none;
+        }
+    }
+
+    #maincontent {
+        padding-bottom: 25rem;
+    }
+
+    .cms-index-index #zero-1-hyva-pos-auto-add {
+        margin-bottom: 0;
+    }
+
+    .page-footer {
+        .openpos-settings button span,
+        .navigation a span {
+            font-size: 10px !important;
+        }
+        #openpos-customermanagement {
+            padding: 0 1rem;
+            span {
+                font-size: 10px !important;
+            }
+        }   
+        #openpos-customermanagement .openpos-popup-content span {
+            font-size: inherit !important;
+        }
+    }
+
+    #cart-drawer {
+        position: relative;
+        z-index: 99999;
+    }
+    .page-footer {
+        position: fixed;
+        z-index: 999999;
+    }
+
+    .openpos-header {
+        @apply flex-wrap;
+
+        #openpos-switcher {
+            width: 100%;
+            padding-left: 1.5rem;
+            margin-bottom: 1.5rem;
+        }
+
+        #openpos-switcher:before {
+            content: "-or-";
+            width: 100%;
+            display: inline-block;
+            text-align: center;
+            font-size: 12px;
+            margin-bottom: 1rem;
+        }
+    }
+
+    .checkout-cart-index {
+        #maincontent {
+            padding-bottom: 1rem;
+        }
+        .btn-secondary {
+            font-size: 0.9rem;
+            justify-content: center;
+        }
+        .vouchers-wrapper .cart-discount {
+            flex-wrap: wrap;
+        }
+    }
+
+    .hyva_checkout-index-index {
+        #openpos-customermanagement .btn-secondary {
+            width: auto;
+            margin: 0 0 0 auto;
+        }
+    }
+    
 }

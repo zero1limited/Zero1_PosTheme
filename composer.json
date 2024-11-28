@@ -1,6 +1,6 @@
 {
     "name": "zero1/pos-theme",
-    "description": "A theme for the ZERO-1 POS Electronic Point Of Sale",
+    "description": "OpenPOS default theme",
     "config": {
         "sort-packages": true
     },

@@ -7,6 +7,7 @@
  */
 
 use Hyva\Theme\Model\ViewModelRegistry;
+use Hyva\Theme\ViewModel\HeroiconsSolid;
 use Hyva\Theme\ViewModel\HeroiconsOutline;
 use Hyva\Theme\ViewModel\Navigation;
 use Magento\Framework\View\Element\Template;
@@ -16,8 +17,11 @@ use Magento\Framework\Escaper;
 /** @var Escaper $escaper */
 /** @var ViewModelRegistry $viewModels */
 
+/** @var HeroiconsSolid $heroicons */
+$heroicons = $viewModels->require(HeroiconsSolid::class);
+
 /** @var HeroiconsOutline $heroicons */
-$heroicons = $viewModels->require(HeroiconsOutline::class);
+$heroiconsOutline = $viewModels->require(HeroiconsOutline::class);
 
 /** @var Navigation $viewModelNavigation */
 $viewModelNavigation = $viewModels->require(Navigation::class);
@@ -30,22 +34,23 @@ $block->setData('cache_tags', $viewModelNavigation->getIdentities());
 
 ?>
 <div x-data="initMenuMobile<?= $escaper->escapeHtml($uniqueId) ?>()"
-     class="z-20 order-1 navigation -ml-4"
+     class="z-20 navigation"
 >
     <!-- mobile -->
     <div @load.window="setActiveMenu($root)"
-         class="bg-container-lighter"
-         :class="{'h-screen overflow-x-hidden overflow-y-auto fixed top-0 left-0 w-full mobilemenuwrapper' : open}"
+         class=""
+         :class="{'h-screen bg-container-lighter overflow-x-hidden overflow-y-auto fixed top-0 left-0 w-full mobilemenuwrapper' : open}"
          @toggle-mobile-menu.window="open = !open"
          @keydown.window.escape="open=false"
     >
         <div class="flex items-baseline justify-between menu-icon">
             <div class="flex justify-end w-full">
                 <a @click="$dispatch('toggle-mobile-menu')"
-                       class="flex items-center justify-center cursor-pointer text-white bg-pos-blue"
+                       class="flex items-center justify-center cursor-pointer flex-col"
                        :class="{ 'ml-auto': open }">
-                    <?= $heroicons->xHtml('hidden bg-white text-black p-4', 64, 64, [":class" => "{ 'hidden' : !open, 'block': open }"]); ?>
-                    <?= $heroicons->menuHtml('p-3', 48, 48, [":class" => "{ 'hidden' : open, 'block': !open }"]); ?>
+                    <?= $heroiconsOutline->xHtml('hidden bg-white text-black p-4 stroke-1', 64, 64, [":class" => "{ 'hidden' : !open, 'block': open }"]); ?>
+                    <?= $heroicons->tagHtml('p-1', 30, 30, [":class" => "{ 'hidden' : open, 'block': !open }"]); ?>
+                    <span class="inline-block text-sm" :class="{ 'hidden': open, 'block': !open }"><?php echo __('Products'); ?></span>
                 </a>
             </div>
         </div>
@@ -63,8 +68,8 @@ $block->setData('cache_tags', $viewModelNavigation->getIdentities());
                         'translate-x-0' : !mobilePanelActiveId
                     }"
                 >
-                    <a class="flex items-center w-full px-8 py-4 border-b cursor-pointer
-                        bg-container-lighter border-container level-0"
+                    <a class="flex items-center w-full p-8 border-b cursor-pointer
+                        bg-container-lighter border-container level-0 font-bold"
                        href="<?= $escaper->escapeUrl($menuItem['url']) ?>"
                        title="<?= $escaper->escapeHtmlAttr($menuItem['name']) ?>">
                         <?= $escaper->escapeHtml($menuItem['name']) ?>
@@ -89,7 +94,7 @@ $block->setData('cache_tags', $viewModelNavigation->getIdentities());
                             'translate-x-0' : mobilePanelActiveId === '<?= /* @noEscape */ (string) $index ?>',
                         }"
                     >
-                        <a class="flex items-center px-8 py-4 border-b cursor-pointer bg-container border-container"
+                        <a class="flex items-center p-8 border-b cursor-pointer bg-container border-container font-bold"
                               @click="mobilePanelActiveId = 0"
                         >
                             <?= $heroicons->chevronLeftHtml(); ?>
@@ -99,7 +104,7 @@ $block->setData('cache_tags', $viewModelNavigation->getIdentities());
                         </a>
                         <a href="<?= $escaper->escapeUrl($menuItem['url']) ?>"
                            title="<?= $escaper->escapeHtmlAttr($menuItem['name']) ?>"
-                           class="flex items-center w-full px-8 py-4 border-b cursor-pointer
+                           class="flex items-center w-full p-8 border-b cursor-pointer
                             bg-container-lighter border-container"
                         >
                             <span class="w-6"></span>
@@ -108,7 +113,7 @@ $block->setData('cache_tags', $viewModelNavigation->getIdentities());
 
                             <a href="<?= $escaper->escapeUrl($subMenuItem['url']) ?>"
                                title="<?= $escaper->escapeHtmlAttr($subMenuItem['name']) ?>"
-                               class="flex items-center w-full px-8 py-4 border-b cursor-pointer
+                               class="flex items-center w-full p-8 border-b cursor-pointer
                                 bg-container-lighter border-container"
                             >
                                 <span class="w-6"></span>
