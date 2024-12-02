@@ -620,6 +620,9 @@ html {
     .page-footer {
         display: none;
     }
+    #zero1-advanced-success {
+        display: none;
+    }
 }
 
 /* ===================================================
