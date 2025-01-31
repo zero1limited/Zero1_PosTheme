@@ -11,6 +11,14 @@
             </container>
         </referenceContainer>
 
+        <referenceBlock name="header-content">
+            <block class="Magento\Framework\View\Element\Template" name="openpos.cart" template="Zero1_OpenPos::html/header/cart.phtml" cacheable="false">
+                <arguments>
+                    <argument name="magewire" xsi:type="object">Zero1\OpenPos\Magewire\Cart</argument>
+                </arguments>
+            </block>
+        </referenceBlock>
+
         <move element="topmenu_mobile" destination="footer" before="-" />
     </body>
 </page>
