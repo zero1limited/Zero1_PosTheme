@@ -492,7 +492,9 @@ html {
     }
     #cart-drawer,
     .openpos-header,
-    .navigation {
+    .navigation,
+    #openpos-cart,
+    #cart-drawer-wrapper {
         display: none;
     }
     .columns {
@@ -608,7 +610,9 @@ html {
     #cart-drawer,
     #maincontent .container.flex,
     #header .navigation,
-    .column.main .checkout-success {
+    .column.main .checkout-success,
+    #openpos-cart,
+    #cart-drawer-wrapper {
         display: none;
     }
     .columns {
