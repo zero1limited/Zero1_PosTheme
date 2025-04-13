@@ -8,7 +8,7 @@
         "php": ">=7.3.0",
         "magento/framework": ">=102.0.0"
     },
-    "type": "magento2-theme",
+    "type": "magento2-module",
     "authors": [{
         "name": "ZERO-1 Ltd",
         "email": "sales@zero1.co.uk"
@@ -17,6 +17,14 @@
     "autoload": {
         "files": [
             "registration.php"
+        ]
+    },
+    "extra": {
+        "map": [
+            ["../../hyva-themes/magento2-default-theme/web/tailwind/browser-sync.config.js", "../../vendor/zero1/pos-theme/web/tailwind/browser-sync.config.js"],
+            ["../../hyva-themes/magento2-default-theme/web/tailwind/package.json", "../../vendor/zero1/pos-theme/web/tailwind/package.json"],
+            ["../../hyva-themes/magento2-default-theme/web/tailwind/package-lock.json", "../../vendor/zero1/pos-theme/web/tailwind/package-lock.json"],
+            ["../../hyva-themes/magento2-default-theme/web/tailwind/postcss.config.js", "../../vendor/zero1/pos-theme/web/tailwind/postcss.config.js"]
         ]
     }
 }

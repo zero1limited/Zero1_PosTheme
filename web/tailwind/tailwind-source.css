@@ -2,24 +2,24 @@
 @import "tailwindcss/base";
 @import "tailwindcss/components";
 
-@import url(components/category-page.css);
-@import url(components/product-prices.css);
-@import url(components/cart.css);
-@import url(components/customer.css);
-@import url(components/forms.css);
-@import url(components/messages.css);
-@import url(components/product-list.css);
-@import url(components/product-page.css);
-@import url(components/wishlist.css);
-@import url(components/modal.css);
-@import url(components/slider.css);
-@import url(components/structure.css);
-@import url(components/swatches.css);
-@import url(components/button.css);
-@import url(components/theming.css);
-@import url(components/transitions.css);
-@import url(components/typography.css);
-@import url(components/page-builder.css);
+@import url(../../../../hyva-themes/magento2-default-theme/web/tailwind/components/category-page.css);
+@import url(../../../../hyva-themes/magento2-default-theme/web/tailwind/components/product-prices.css);
+@import url(../../../../hyva-themes/magento2-default-theme/web/tailwind/components/cart.css);
+@import url(../../../../hyva-themes/magento2-default-theme/web/tailwind/components/customer.css);
+@import url(../../../../hyva-themes/magento2-default-theme/web/tailwind/components/forms.css);
+@import url(../../../../hyva-themes/magento2-default-theme/web/tailwind/components/messages.css);
+@import url(../../../../hyva-themes/magento2-default-theme/web/tailwind/components/product-list.css);
+@import url(../../../../hyva-themes/magento2-default-theme/web/tailwind/components/product-page.css);
+@import url(../../../../hyva-themes/magento2-default-theme/web/tailwind/components/wishlist.css);
+@import url(../../../../hyva-themes/magento2-default-theme/web/tailwind/components/modal.css);
+@import url(../../../../hyva-themes/magento2-default-theme/web/tailwind/components/slider.css);
+@import url(../../../../hyva-themes/magento2-default-theme/web/tailwind/components/structure.css);
+@import url(../../../../hyva-themes/magento2-default-theme/web/tailwind/components/swatches.css);
+@import url(../../../../hyva-themes/magento2-default-theme/web/tailwind/components/button.css);
+@import url(../../../../hyva-themes/magento2-default-theme/web/tailwind/components/theming.css);
+@import url(../../../../hyva-themes/magento2-default-theme/web/tailwind/components/transitions.css);
+@import url(../../../../hyva-themes/magento2-default-theme/web/tailwind/components/typography.css);
+@import url(../../../../hyva-themes/magento2-default-theme/web/tailwind/components/page-builder.css);
 
 /* purgecss end ignore */
 
