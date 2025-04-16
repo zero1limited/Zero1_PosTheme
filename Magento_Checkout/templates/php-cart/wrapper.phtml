@@ -27,7 +27,7 @@ use Magento\Framework\Escaper;
     <?php echo $this->getLayout()->createBlock('Magento\Cms\Block\Block')->setBlockId('openpos-cart-crossells')->toHtml(); ?>
 
     <div x-data="{ showVouchers: false }" class="">
-        <span class="btn btn-secondary p-6 mb-4" @click="showVouchers = !showVouchers"><?php echo _('Apply Voucher Code or Discount Code'); ?></span>
+        <span class="btn btn-secondary p-6 mb-4" @click="showVouchers = !showVouchers"><?php echo __('Apply Voucher Code or Discount Code'); ?></span>
         <div class="vouchers-wrapper mt-4" x-show="showVouchers">
             <?= $block->getChildHtml('cart.discount') ?>
         </div>
