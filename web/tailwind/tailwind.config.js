@@ -147,6 +147,7 @@ module.exports = hyvaModules.mergeTailwindConfig({
       },
       minHeight: {
         14: spacing["14"],
+        a11y: '44px',
         'screen-25': '25vh',
         'screen-50': '50vh',
         'screen-75': '75vh'

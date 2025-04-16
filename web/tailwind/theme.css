@@ -1,13 +1,11 @@
-@import "theme/components/footer.css";
-@import "theme/components/header.css";
-@import "theme/components/page.css";
-@import "theme/components/category.css";
-@import "theme/components/customer.css";
-@import "theme/components/recaptcha.css";
-@import "theme/components/sales.css";
-@import "theme/components/style/forms.css";
+@import "../../../../hyva-themes/magento2-default-theme/web/tailwind/theme/components/footer.css";
+@import "../../../../hyva-themes/magento2-default-theme/web/tailwind/theme/components/header.css";
+@import "../../../../hyva-themes/magento2-default-theme/web/tailwind/theme/components/page.css";
+@import "../../../../hyva-themes/magento2-default-theme/web/tailwind/theme/components/category.css";
+@import "../../../../hyva-themes/magento2-default-theme/web/tailwind/theme/components/customer.css";
+@import "../../../../hyva-themes/magento2-default-theme/web/tailwind/theme/components/recaptcha.css";
+@import "../../../../hyva-themes/magento2-default-theme/web/tailwind/theme/components/sales.css";
+@import "../../../../hyva-themes/magento2-default-theme/web/tailwind/theme/components/style/forms.css";
+@import "../../../../hyva-themes/magento2-default-theme/web/tailwind/theme/components/style/layout.css";
 
-/* ===================================================
-** ZERO-1 Master Styles (Master Styling for client)
-=================================================== */
-@import "zero1-master-styles.css";
+@import "openpos-styles.css";
