@@ -216,7 +216,7 @@ $heroiconsSolid = $viewModels->require(HeroiconsSolid::class);
                                             <span x-html="item.qty"></span> x <span x-html="item.product_name"></span>
                                             <p><span x-html="item.product_price"></span></p>
                                             
-                                            <span class="underline text-sm" @click="showOptions = !showOptions"><?php echo _('Show product details'); ?></span>
+                                            <span class="underline text-sm" @click="showOptions = !showOptions"><?php echo __('Show product details'); ?></span>
                                             <div class="options" x-show="showOptions">
                                                 <p class="text-xs mt-2"><span x-html="item.product_sku"></span></p>
                                                 <template x-for="option in item.options">
