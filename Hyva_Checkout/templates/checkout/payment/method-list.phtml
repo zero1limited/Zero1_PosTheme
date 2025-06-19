@@ -29,66 +29,61 @@ $methods = $viewModel->getList();
 ?>
 <div id="payment-methods">
     <?php if ($methods): ?>
-        <script>
-            window.addEventListener('checkout:step:loaded', () => {
-                if('<?= $escaper->escapeJs($magewire->method) ?>' && document.getElementById('payment-method-list')) {
-                    window.dispatchEvent(new CustomEvent('checkout:payment:method-activate', { detail: { method: '<?= $escaper->escapeJs($magewire->method) ?>'} }))
-                }
-            }, { once: true })
-        </script>
-
-        <ol id="payment-method-list" class="w-full gap-y-6">
+        <div
+            id="payment-method-list"
+            class="space-y-2 mt-4"
+            data-method="<?= $escaper->escapeHtmlAttr($magewire->method) ?>">
             <?php foreach ($methods as $method): ?>
                 <?php $methodCodeAttr = $escaper->escapeHtmlAttr($method->getCode()) ?>
                 <?php $methodMetaData = $viewModel->getMethodMetaData($block, $method) ?>
 
-                <li id="payment-method-option-<?= /* @noEscape */ $methodCodeAttr ?>"
-                    class="<?= $magewire->method === $method->getCode() ? 'active' : 'inactive' ?>"
+                <div
+                    id="payment-method-option-<?= /* @noEscape */ $methodCodeAttr ?>"
+                    class="border-2 rounded-md <?= $magewire->method === $method->getCode() ? 'active bg-opacity-10 border-black' : 'inactive bg-white' ?>"
                     wire:key="<?= /* @noEscape */ $methodCodeAttr ?>"
                 >
-                    <div class="flex">
-                        <div class="flex items-center">
-                            <input type="radio"
-                                   class="flex-none disabled:opacity-25 hidden peer"
-                                   id="payment-method-<?= /* @noEscape */ $methodCodeAttr ?>"
-                                   name="payment-method-option"
-                                   value="<?= /* @noEscape */ $methodCodeAttr ?>"
-                                   wire:model="method"
+                    <label class="flex gap-x-2.5 mb-0 p-4 cursor-pointer">
+                        <div class="hidden">
+                            <input
+                                type="radio"
+                                class="form-radio relative top-0.5"
+                                id="payment-method-<?= /* @noEscape */ $methodCodeAttr ?>"
+                                name="payment-method-option"
+                                value="<?= /* @noEscape */ $methodCodeAttr ?>"
+                                wire:model="method"
                             />
                         </div>
 
-                        <label for="payment-method-<?= /* @noEscape */ $methodCodeAttr ?>"
-                         class="btn btn-primary btn-secondary p-8 main-label">                           
-                            <div class="block">
-                                <div class="w-full text-lg font-semibold"><?= $escaper->escapeHtml($method->getTitle()) ?></div>
+                        <span class="flex flex-1 flex-wrap justify-between gap-x-4 gap-y-2">
+                            <span class="text-gray-700 font-medium flex flex-col break-words hyphens-auto leading-loose w-full text-center text-lg font-semibold">
+                                <?= $escaper->escapeHtml($method->getTitle()) ?>
 
                                 <?php if ($methodMetaData->hasSubTitle()): ?>
-                                    <div class="w-full">
+                                    <span class="text-gray-700 font-medium break-words hyphens-auto">
                                         <?= $escaper->escapeHtml($methodMetaData->getSubTitle()) ?>
-                                        </div>
+                                    </span>
                                 <?php endif ?>
-                            </div>
-                        </label>
+                            </span>
 
-                            <?php if ($methodMetaData->canRenderIcon()): ?>
-                                <div class="-mt-2.5">
-                                    <?= /* @noEscape */ $methodMetaData->renderIcon() ?>
+                            <?php if ($methodMetaData->canRenderIcon() && $iconHtml = $methodMetaData->renderIcon()): ?>
+                                <div>
+                                    <?= /* @noEscape */ $iconHtml; ?>
                                 </div>
                             <?php endif ?>
-                        </label>
-                    </div>
+                        </span>
+                    </label>
                     <?php if ($viewModel->canShowMethod($block, $method, $magewire->method)): ?>
                         <?php $html = $viewModel->getMethodBlock($block, $method)->toHtml() ?>
 
                         <?php if (! empty($html)): ?>
-                            <div id="<?= 'payment-method-view-' . /* @noEscape */ $methodCodeAttr ?>" class="w-full payment-method-container">
+                            <div id="<?= 'payment-method-view-' . /* @noEscape */ $methodCodeAttr ?>" class="p-4 pt-0">
                                 <?= /* @noEscape */ $html ?>
                             </div>
                         <?php endif ?>
                     <?php endif ?>
-                </li>
+                </div>
             <?php endforeach ?>
-        </ol>
+        </div>
     <?php else: ?>
         <div class="message warning">
             <?= $escaper->escapeHtml(__('No Payment method available.')) ?>

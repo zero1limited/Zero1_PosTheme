@@ -12,5 +12,7 @@
 >
     <body>
         <referenceContainer name="checkout.billing-details.section" remove="true" />
+        <referenceContainer name="checkout.guest-details.section" remove="true" />
+        <referenceContainer name="checkout.quote-summary.section" remove="true" />
     </body>
 </page>
