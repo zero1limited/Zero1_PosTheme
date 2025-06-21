@@ -369,7 +369,8 @@ html {
 .page-footer,
 .mobilemenuwrapper,
 .top-container,
-.openpos-popup {
+.openpos-popup,
+.product-main-full-width {
     width: 70%;
 }
 
