@@ -1,0 +1,25 @@
+<?php
+/**
+ * Hyvä Themes - https://hyva.io
+ * Copyright © Hyvä Themes 2022-present. All rights reserved.
+ * This product is licensed per Magento install
+ * See https://hyva.io/license
+ */
+
+declare(strict_types=1);
+
+use Magento\Framework\View\Element\Template;
+
+/** @var Template $block */
+?>
+
+<div class="grid grid-cols-1 gap-6 items-start">
+    <div class="area-main space-y-6">
+        <?= $block->getChildHtml('column.main') ?>
+    </div>
+    <?php /*
+    <div class="area-right checkout-summary space-y-6 lg:sticky lg:top-6">
+        <?= $block->getChildHtml('column.right') ?>
+    </div>
+    */ ?>
+</div>

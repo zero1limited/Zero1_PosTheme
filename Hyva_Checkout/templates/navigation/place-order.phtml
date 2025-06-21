@@ -19,7 +19,9 @@ use Magento\Framework\View\Element\Template;
 /** @var Navigation $viewModel */
 
 $viewModel = $viewModels->require(Navigation::class);
-$next = $viewModel->getConfig()->getStepAfter();
+$navigator = $viewModel->getNavigator();
+$checkout  = $navigator->getActiveCheckout();
+$next      = $checkout->getStepAfter($navigator->getActiveStep())
 ?>
 <?php if ($next === null): ?>
     <button type="button"
@@ -27,8 +29,7 @@ $next = $viewModel->getConfig()->getStepAfter();
         class="btn btn-primary c-primary-cta w-full
                 disabled:opacity-10
                 disabled:cursor-not-allowed"
-        x-spread="buttonPlaceOrder()"
-        x-bind="buttonPlaceOrder()"
+        x-bind="buttonPlaceOrder"
     >
         <?= $escaper->escapeHtml(__('Complete Order')) ?>
     </button>
