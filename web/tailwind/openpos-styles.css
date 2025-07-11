@@ -438,9 +438,14 @@ html {
 
 /* Hide filters as they're not gonna prove much use at the minute */
 .catalog-category-view .columns .column.main .block.border.border-container.bg-container-darker.p-4.md\:border-0.md\:bg-transparent.md\:py-0.md\:px-0.my-6,
-.catalogsearch-result-index .columns .column.main .block.border.border-container.bg-container-darker.p-4.md\:border-0.md\:bg-transparent.md\:py-0.md\:px-0.my-6,
-.main-pos-nav {
+.catalogsearch-result-index .columns .column.main .block.border.border-container.bg-container-darker.p-4.md\:border-0.md\:bg-transparent.md\:py-0.md\:px-0.my-6 {
     display: none;
+}
+
+#pos-filter-button {
+    width: 100%;
+    padding: 1rem;
+    margin-top: 1rem;
 }
 
 .cms-index-index #zero-1-hyva-pos-auto-add {
