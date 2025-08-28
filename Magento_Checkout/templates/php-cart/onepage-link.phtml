@@ -23,8 +23,4 @@ use Magento\Framework\Escaper;
         <?= $escaper->escapeHtml(__('Pay')) ?>
     </a>
 
-    <form action="<?= $block->getUrl('openpos/layaways/createorder') ?>" method="post">
-        <?= $block->getBlockHtml('formkey') ?>
-        <button type="submit" class="btn btn-primary rounded text-lg font-medium p-6 my-4 checkout justify-center text-center">Complete order without payment</button>
-    </form>
 <?php endif ?>
