@@ -27,8 +27,8 @@ $heroiconsSolid = $viewModels->require(HeroiconsSolid::class);
 
 
     <button @click="open = true">
-        <?= $heroiconsSolid->cogHtml('p-1 w-full', 30, 30); ?>
-        <span class="inline-block text-sm"><?php echo __('Settings'); ?></span>
+        <?= $heroiconsSolid->menuHtml('p-1 w-full', 30, 30); ?>
+        <span class="inline-block text-sm"><?php echo __('Menu'); ?></span>
     </button>
 
     <div
@@ -48,9 +48,10 @@ $heroiconsSolid = $viewModels->require(HeroiconsSolid::class);
 
             <div class="w-full openpos-popup-content">
                 <a href="/openpos/tillsession/login/" class="flex items-center w-full p-8 border-b cursor-pointer bg-container-lighter border-container level-0 font-bold"><?php echo __('Logout of '); ?><span class="openpos-logo"></span></a>
+                <a href="/openpos/order/index/" class="flex items-center w-full p-8 border-b cursor-pointer bg-container-lighter border-container level-0 font-bold"><?php echo __('View orders'); ?></a>
             </div>
 
         </div>
     </div>
 </div>
-<div class="pl-0 hidden overflow-scroll pb-10 pb-8"></div>
+<div class="pl-0 hidden overflow-scroll pb-10 pb-8 lg:flex-1 border-b-0 grid grid-cols-1 lg:grid-cols-3 gap-4 even:bg-gray-50"></div>
