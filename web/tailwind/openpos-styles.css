@@ -531,6 +531,12 @@ html {
     #backtobasket {
         display: block !important;
     }
+    .cart-summary .checkout-methods-items {
+        a, button {
+            font-size: 1.5rem;
+            padding: 2.2rem;
+        }
+    }
 }
 
 /* ===================================================
@@ -600,15 +606,28 @@ html {
     }
 }
 
+.openpos-order-view {
+    .columns {
+        grid-template-columns: auto;
+    }
+    .order-details-items .actions-toolbar {
+        display: none;
+    }
+}
+
 /* ===================================================
-** Success
+** Full width pages
 =================================================== */
 
-.checkout-onepage-success {
+.checkout-onepage-success,
+.openpos-order-view,
+.openpos-layaways-makepayment,
+.openpos-order-success {
     #maincontent,
     .page-footer,
     .page-header,
-    .order-1.w-auto {
+    .order-1.w-auto,
+    .page.messages {
         width: 100%;
     }
     .openpos-header,
@@ -690,7 +709,7 @@ html {
     }
 
     .openpos-settings {
-        padding: 13px;
+        padding: 13px 24px;
         background: #f9f9f9;
         @apply border-r;
     }
@@ -796,6 +815,63 @@ html {
     .order-items .hidden {
         display: none;
     }
+}
+
+/* ===================================================
+** Layaways
+=================================================== */
+
+.radios-like-buttons label.inline-flex {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: .5rem;
+  border-radius: 4px;
+  border: 1px solid #000;     /* gray-300 */
+  background: #FFFFFF;
+  color: #111827;                /* gray-900 */
+  cursor: pointer;
+  transition: background-color .15s ease, color .15s ease, border-color .15s ease, box-shadow .15s ease;
+  width: 100%;
+  box-sizing: border-box;
+  text-align: center;
+  user-select: none;
+}
+
+.radios-like-buttons label.inline-flex input[type="radio"] {
+  position: absolute !important;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  clip-path: inset(50%);
+  white-space: nowrap;
+  border: 0;
+  opacity: 0;
+}
+
+.radios-like-buttons label.inline-flex:hover {
+  background: #F3F4F6; /* gray-100 */
+}
+
+.radios-like-buttons label.inline-flex:focus-within {
+  box-shadow: 0 0 0 3px rgba(59,130,246,0.18);
+  border-color: #3B82F6;
+}
+
+.radios-like-buttons label.inline-flex:has(input[type="radio"]:checked) {
+  background: #3B82F6;
+  color: #FFFFFF;
+  border-color: #3B82F6;
+  box-shadow: 0 6px 18px rgba(59,130,246,0.12);
+  font-weight: 600;
+}
+
+.radios-like-buttons .flex.w-full > label.inline-flex,
+.radios-like-buttons div.flex.w-full > label.inline-flex {
+  width: 100%;
 }
 
 /* ===================================================
