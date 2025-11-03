@@ -606,13 +606,23 @@ html {
     }
 }
 
+.openpos-order-view {
+    .columns {
+        grid-template-columns: auto;
+    }
+    .order-details-items .actions-toolbar {
+        display: none;
+    }
+}
+
 /* ===================================================
 ** Full width pages
 =================================================== */
 
 .checkout-onepage-success,
 .openpos-order-view,
-.openpos-layaways-makepayment {
+.openpos-layaways-makepayment,
+.openpos-order-success {
     #maincontent,
     .page-footer,
     .page-header,
